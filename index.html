@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>CV – Cyrille Audureau – Technicien Support N2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+:root {
+    --bg-cream: #fdfbf7;
+    --bg-warm: #f7f3ed;
+    --accent-primary: #c45c26;
+    --accent-secondary: #2d5a4a;
+    --accent-gold: #d4a853;
+    --text-dark: #1a1a1a;
+    --text-medium: #4a4a4a;
+    --text-light: #717171;
+    --border-light: rgba(196, 92, 38, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-cream);
+    color: var(--text-dark);
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+/* Decorative background pattern */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(196, 92, 38, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(45, 90, 74, 0.03) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    position: relative;
+}
+
+/* Hero Header */
+.header {
+    background: linear-gradient(135deg, #fff 0%, var(--bg-warm) 100%);
+    border: 1px solid var(--border-light);
+    border-radius: 32px;
+    padding: 3rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(196, 92, 38, 0.08);
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Decorative corner accent */
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-gold));
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-gold), var(--accent-secondary));
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.identity {
+    flex: 1;
+}
+
+.name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.title-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: linear-gradient(135deg, var(--accent-primary), #d4703d);
+    color: white;
+    padding: 0.6rem 1.4rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(196, 92, 38, 0.3);
+}
+
+.title-badge i {
+    font-size: 0.9rem;
+}
+
+.contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-medium);
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.contact-item:hover {
+    color: var(--accent-primary);
+}
+
+.contact-item i {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-warm);
+    border-radius: 8px;
+    color: var(--accent-primary);
+    font-size: 0.8rem;
+}
+
+.contact-item a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Impact Stats */
+.impact-box {
+    background: white;
+    border: 2px solid var(--border-light);
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 200px;
+}
+
+.impact-stat {
+    text-align: center;
+    padding: 0.8rem;
+    background: var(--bg-warm);
+    border-radius: 12px;
+}
+
+.impact-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    line-height: 1;
+}
+
+.impact-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.3rem;
+}
+
+/* Value Proposition */
+.value-prop {
+    background: linear-gradient(135deg, var(--accent-secondary), #3d7a65);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.value-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.value-icon {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.value-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* Sections */
+.section {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 24px;
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    animation: fadeIn 0.8s ease-out backwards;
+}
+
+.section:nth-child(2) { animation-delay: 0.1s; }
+.section:nth-child(3) { animation-delay: 0.2s; }
+.section:nth-child(4) { animation-delay: 0.3s; }
+.section:nth-child(5) { animation-delay: 0.4s; }
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--bg-warm);
+}
+
+.section-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-gold));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 15px rgba(196, 92, 38, 0.25);
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* Experience Cards */
+.experience-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.exp-card {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--bg-cream);
+    border-radius: 16px;
+    border-left: 4px solid var(--accent-primary);
+    transition: all 0.3s ease;
+}
+
+.exp-card:hover {
+    transform: translateX(8px);
+    box-shadow: 0 8px 30px rgba(196, 92, 38, 0.1);
+}
+
+.exp-date {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.exp-period {
+    background: var(--accent-primary);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.exp-duration {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+}
+
+.exp-content h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.3rem;
+}
+
+.exp-company {
+    color: var(--accent-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+}
+
+.exp-tasks {
+    list-style: none;
+}
+
+.exp-tasks li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-medium);
+    font-size: 0.95rem;
+}
+
+.exp-tasks li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    font-weight: bold;
+}
+
+/* Skills Section */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background: var(--bg-cream);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.skill-category-title {
+    font-weight: 600;
+    color: var(--accent-secondary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skill-category-title i {
+    font-size: 0.9rem;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-pill {
+    padding: 0.5rem 1rem;
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-medium);
+    transition: all 0.3s ease;
+}
+
+.skill-pill:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(196, 92, 38, 0.15);
+}
+
+.skill-pill.featured {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-gold));
+    color: white;
+    border: none;
+    font-weight: 600;
+}
+
+/* Soft Skills */
+.soft-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.soft-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: var(--bg-cream);
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+
+.soft-item:hover {
+    background: white;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    transform: translateY(-3px);
+}
+
+.soft-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--accent-secondary), #4a8b75);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+}
+
+.soft-label {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* Formation Timeline */
+.formation-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.formation-timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent-gold), var(--accent-primary), transparent);
+}
+
+.formation-item {
+    position: relative;
+    padding-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.formation-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 0.4rem;
+    width: 14px;
+    height: 14px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--accent-gold);
+}
+
+.formation-year {
+    display: inline-block;
+    background: var(--bg-warm);
+    color: var(--accent-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.formation-title {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 1.05rem;
+}
+
+.formation-school {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Why Me Section */
+.why-me {
+    background: linear-gradient(135deg, var(--accent-primary), #d4703d);
+    border-radius: 24px;
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out backwards;
+    animation-delay: 0.5s;
+}
+
+.why-me-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.why-me-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.why-item {
+    background: rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.why-item i {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    display: block;
+}
+
+.why-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.why-item p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+/* Export Button */
+.export-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-gold));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(196, 92, 38, 0.35);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.export-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(196, 92, 38, 0.45);
+}
+
+.export-btn:active {
+    transform: translateY(0);
+}
+
+.export-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.export-btn i {
+    font-size: 1.1rem;
+}
+
+.export-btn .spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* PDF specific styles */
+.pdf-generating .export-btn {
+    pointer-events: none;
+}
+
+@media print {
+    .export-btn {
+        display: none !important;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        padding: 2rem 1.5rem;
+    }
+
+    .header-top {
+        flex-direction: column;
+    }
+
+    .impact-box {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .impact-stat {
+        flex: 1;
+    }
+
+    .exp-card {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .exp-date {
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .section {
+        padding: 1.5rem;
+    }
+
+    .value-prop {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media print {
+    body { background: white; }
+    .section, .header, .why-me { box-shadow: none; border: 1px solid #ddd; }
+    footer { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <header class="header">
+        <div class="header-top">
+            <div class="identity">
+                <h1 class="name">Cyrille Audureau</h1>
+                <div class="title-badge">
+                    <i class="fas fa-headset"></i>
+                    Technicien Support N2
+                </div>
+
+                <div class="contact-row">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+33698727337">06 98 72 73 37</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:cyrille44tech@protonmail.com">cyrille44tech@protonmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>44700 Orvault</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-car"></i>
+                        <span>Permis B</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="impact-box">
+                <div class="impact-stat">
+                    <div class="impact-number">30+</div>
+                    <div class="impact-label">Ans d'expérience</div>
+                </div>
+                <div class="impact-stat">
+                    <div class="impact-number">15+</div>
+                    <div class="impact-label">Ans en IT</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="value-prop">
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-rocket"></i></div>
+                <div class="value-text">Formé IA & Automatisation en 2024</div>
+            </div>
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-users-cog"></i></div>
+                <div class="value-text">Expert formation & tutorat collaborateurs</div>
+            </div>
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="value-text">Parcours évolutif : terrain → IT</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Why Hire Me -->
+    <section class="why-me">
+        <h2 class="why-me-title">Pourquoi me recruter ?</h2>
+        <div class="why-me-grid">
+            <div class="why-item">
+                <i class="fas fa-brain"></i>
+                <h4>Double compétence</h4>
+                <p>Expertise technique IT + sens business acquis sur le terrain (management, commerce, production)</p>
+            </div>
+            <div class="why-item">
+                <i class="fas fa-graduation-cap"></i>
+                <h4>Transmission du savoir</h4>
+                <p>Formateur naturel, j'ai accompagné et tutoré de nombreux collaborateurs avec pédagogie</p>
+            </div>
+            <div class="why-item">
+                <i class="fas fa-lightbulb"></i>
+                <h4>Vision moderne</h4>
+                <p>Formé aux outils IA et No-code en 2024 pour optimiser les processus support</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-briefcase"></i></div>
+            <h2 class="section-title">Parcours professionnel</h2>
+        </div>
+
+        <div class="experience-grid">
+            <div class="exp-card">
+                <div class="exp-date">
+                    <span class="exp-period">2021 – 2026</span>
+                    <span class="exp-duration">5 ans</span>
+                </div>
+                <div class="exp-content">
+                    <h3>Technicien Support N2</h3>
+                    <div class="exp-company">Liciel Environnement – Saint‑Herblain</div>
+                    <ul class="exp-tasks">
+                        <li>Support et formation logiciels pour professionnels de l'immobilier</li>
+                        <li>Tutorat des nouveaux collaborateurs</li>
+                        <li>Personnalisation et amélioration des solutions clients</li>
+                        <li>Suivi des objectifs de qualité et de performance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-date">
+                    <span class="exp-period">2019 – 2021</span>
+                    <span class="exp-duration">2 ans</span>
+                </div>
+                <div class="exp-content">
+                    <h3>Technicien Support N2</h3>
+                    <div class="exp-company">Logicmax Technologie – Nantes</div>
+                    <ul class="exp-tasks">
+                        <li>Support et formation logiciels pour professionnels de santé</li>
+                        <li>Accompagnement utilisateurs et résolution d'incidents</li>
+                        <li>Tutorat des nouveaux collaborateurs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-date">
+                    <span class="exp-period">2012 – 2019</span>
+                    <span class="exp-duration">7 ans</span>
+                </div>
+                <div class="exp-content">
+                    <h3>Technicien d'exploitation & Support N2</h3>
+                    <div class="exp-company">Sodebo</div>
+                    <ul class="exp-tasks">
+                        <li>Support informatique niveau 2</li>
+                        <li>Exploitation Windows, Windows Server, macOS et Citrix</li>
+                        <li>Gestion téléphonie fixe et mobile</li>
+                        <li>Câblage réseau cuivre et fibre optique</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-date">
+                    <span class="exp-period">2010 – 2012</span>
+                    <span class="exp-duration">2 ans</span>
+                </div>
+                <div class="exp-content">
+                    <h3>Assistant ADV, Comptabilité & Statistiques</h3>
+                    <div class="exp-company">Sodebo</div>
+                    <ul class="exp-tasks">
+                        <li>Gestion des tableaux de bord et analyses statistiques</li>
+                        <li>Relance impayés et gestion comptable</li>
+                        <li>Support à la force de vente</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-date">
+                    <span class="exp-period">2003 – 2009</span>
+                    <span class="exp-duration">6 ans</span>
+                </div>
+                <div class="exp-content">
+                    <h3>Chef d'équipe agro‑alimentaire</h3>
+                    <div class="exp-company">Sodebo</div>
+                    <ul class="exp-tasks">
+                        <li>Management d'une équipe de 15 personnes</li>
+                        <li>Gestion de la production industrielle</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-date">
+                    <span class="exp-period">1995 – 2002</span>
+                    <span class="exp-duration">7 ans</span>
+                </div>
+                <div class="exp-content">
+                    <h3>Responsable secteur épicerie</h3>
+                    <div class="exp-company">Intermarché / Leclerc</div>
+                    <ul class="exp-tasks">
+                        <li>Management d'une équipe de 8 personnes</li>
+                        <li>Gestion approvisionnement et merchandising</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-tools"></i></div>
+            <h2 class="section-title">Compétences techniques</h2>
+        </div>
+
+        <div class="skills-container">
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-headset"></i> Support & Formation
+                </div>
+                <div class="skills-list">
+                    <span class="skill-pill featured">Support N2</span>
+                    <span class="skill-pill featured">Support applicatif</span>
+                    <span class="skill-pill">Formation utilisateurs</span>
+                    <span class="skill-pill">Tutorat</span>
+                    <span class="skill-pill">ITSM</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-desktop"></i> Systèmes & Infrastructure
+                </div>
+                <div class="skills-list">
+                    <span class="skill-pill">Windows</span>
+                    <span class="skill-pill">Windows Server</span>
+                    <span class="skill-pill">macOS</span>
+                    <span class="skill-pill">Citrix</span>
+                    <span class="skill-pill">Sécurité poste</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-network-wired"></i> Réseaux & Télécom
+                </div>
+                <div class="skills-list">
+                    <span class="skill-pill">Réseaux TCP/IP</span>
+                    <span class="skill-pill">Câblage cuivre & fibre</span>
+                    <span class="skill-pill">Téléphonie</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-robot"></i> Innovation & Avenir
+                </div>
+                <div class="skills-list">
+                    <span class="skill-pill featured">IA & Automatisation</span>
+                    <span class="skill-pill featured">No‑code</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-heart"></i></div>
+            <h2 class="section-title">Savoir-être</h2>
+        </div>
+
+        <div class="soft-grid">
+            <div class="soft-item">
+                <div class="soft-icon"><i class="fas fa-hands-helping"></i></div>
+                <span class="soft-label">Sens du service</span>
+            </div>
+            <div class="soft-item">
+                <div class="soft-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                <span class="soft-label">Pédagogie</span>
+            </div>
+            <div class="soft-item">
+                <div class="soft-icon"><i class="fas fa-user-check"></i></div>
+                <span class="soft-label">Autonomie</span>
+            </div>
+            <div class="soft-item">
+                <div class="soft-icon"><i class="fas fa-bullseye"></i></div>
+                <span class="soft-label">Rigueur</span>
+            </div>
+            <div class="soft-item">
+                <div class="soft-icon"><i class="fas fa-shield-alt"></i></div>
+                <span class="soft-label">Fiabilité</span>
+            </div>
+            <div class="soft-item">
+                <div class="soft-icon"><i class="fas fa-users"></i></div>
+                <span class="soft-label">Esprit d'équipe</span>
+            </div>
+            <div class="soft-item">
+                <div class="soft-icon"><i class="fas fa-search"></i></div>
+                <span class="soft-label">Analyse</span>
+            </div>
+            <div class="soft-item">
+                <div class="soft-icon"><i class="fas fa-tasks"></i></div>
+                <span class="soft-label">Gestion des priorités</span>
+            </div>
+            <div class="soft-item">
+                <div class="soft-icon"><i class="fas fa-sync-alt"></i></div>
+                <span class="soft-label">Adaptabilité</span>
+            </div>
+            <div class="soft-item">
+                <div class="soft-icon"><i class="fas fa-chart-line"></i></div>
+                <span class="soft-label">Amélioration continue</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h2 class="section-title">Formation & Certifications</h2>
+        </div>
+
+        <div class="formation-timeline">
+            <div class="formation-item">
+                <span class="formation-year">2024</span>
+                <div class="formation-title">Formation IA – Automation & No‑code</div>
+                <div class="formation-school">École CUBE</div>
+            </div>
+
+            <div class="formation-item">
+                <span class="formation-year">2018</span>
+                <div class="formation-title">MOOC Sécurité authentification & nomadisme</div>
+                <div class="formation-school">ANSSI</div>
+            </div>
+
+            <div class="formation-item">
+                <span class="formation-year">2018</span>
+                <div class="formation-title">BULATS A2 – Anglais</div>
+                <div class="formation-school">Cambridge</div>
+            </div>
+
+            <div class="formation-item">
+                <span class="formation-year">2008</span>
+                <div class="formation-title">Technicien de maintenance informatique</div>
+                <div class="formation-school">CNFDI Paris</div>
+            </div>
+
+            <div class="formation-item">
+                <span class="formation-year">1994</span>
+                <div class="formation-title">Prépa Expertise Comptable & Baccalauréat Comptabilité</div>
+                <div class="formation-school">Lycée Albert Camus & Sacré Cœur, Nantes</div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    © 2026 – Cyrille Audureau
+</footer>
+
+<!-- Export PDF Button -->
+<button class="export-btn" id="exportPdfBtn">
+    <i class="fas fa-file-pdf"></i>
+    <span>Télécharger PDF</span>
+</button>
+
+<script>
+document.getElementById('exportPdfBtn').addEventListener('click', async function() {
+    const btn = this;
+    const btnIcon = btn.querySelector('i');
+    const btnText = btn.querySelector('span');
+
+    // Save original state
+    const originalIcon = btnIcon.className;
+    const originalText = btnText.textContent;
+
+    // Show loading state
+    btn.disabled = true;
+    btnIcon.className = '';
+    btnIcon.innerHTML = '<div class="spinner"></div>';
+    btnIcon.style.display = 'flex';
+    btnText.textContent = 'Génération...';
+    document.body.classList.add('pdf-generating');
+
+    try {
+        const element = document.querySelector('.container');
+
+        // Hide export button during generation
+        btn.style.visibility = 'hidden';
+
+        const opt = {
+            margin: [8, 8, 8, 8],
+            filename: 'CV_Cyrille_Audureau_Technicien_Support_N2.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                backgroundColor: '#fdfbf7',
+                windowWidth: 1000,
+                scrollY: 0,
+                scrollX: 0
+            },
+            jsPDF: {
+                unit: 'mm',
+                format: 'a4',
+                orientation: 'portrait'
+            },
+            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        };
+
+        // Generate PDF as blob
+        const pdfBlob = await html2pdf().set(opt).from(element).outputPdf('blob');
+
+        // Create download link
+        const blobUrl = URL.createObjectURL(pdfBlob);
+        const downloadLink = document.createElement('a');
+        downloadLink.href = blobUrl;
+        downloadLink.download = 'CV_Cyrille_Audureau_Technicien_Support_N2.pdf';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+
+        // Cleanup blob URL after a delay
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+
+        // Success state
+        btn.style.visibility = 'visible';
+        btnIcon.innerHTML = '';
+        btnIcon.className = 'fas fa-check';
+        btnText.textContent = 'Téléchargé !';
+
+        // Reset after delay
+        setTimeout(() => {
+            btnIcon.className = originalIcon;
+            btnText.textContent = originalText;
+            btn.disabled = false;
+            document.body.classList.remove('pdf-generating');
+        }, 2500);
+
+    } catch (error) {
+        console.error('Erreur PDF:', JSON.stringify(error));
+
+        // Error state
+        btn.style.visibility = 'visible';
+        btnIcon.innerHTML = '';
+        btnIcon.className = 'fas fa-exclamation-triangle';
+        btnText.textContent = 'Erreur';
+
+        // Reset after delay
+        setTimeout(() => {
+            btnIcon.className = originalIcon;
+            btnText.textContent = originalText;
+            btn.disabled = false;
+            document.body.classList.remove('pdf-generating');
+        }, 2500);
+    }
+});
+</script>
+
+</body>
+</html>
+
