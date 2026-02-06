@@ -6,7 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
 :root {
@@ -639,9 +640,294 @@ footer {
     pointer-events: none;
 }
 
+/* PDF/Print optimized styles - A4 format */
+.pdf-mode {
+    background: white !important;
+}
+
+.pdf-mode .container {
+    max-width: 210mm;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.pdf-mode body::before {
+    display: none;
+}
+
+.pdf-mode .header {
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 0.8rem;
+    border-radius: 12px;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+}
+
+.pdf-mode .header::before {
+    display: none;
+}
+
+.pdf-mode .name {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.pdf-mode .title-badge {
+    padding: 0.35rem 0.9rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.pdf-mode .contact-row {
+    gap: 0.8rem;
+}
+
+.pdf-mode .contact-item {
+    font-size: 0.75rem;
+}
+
+.pdf-mode .contact-item i {
+    width: 20px;
+    height: 20px;
+    font-size: 0.65rem;
+}
+
+.pdf-mode .impact-box {
+    padding: 0.8rem;
+    min-width: 140px;
+    gap: 0.5rem;
+}
+
+.pdf-mode .impact-stat {
+    padding: 0.5rem;
+}
+
+.pdf-mode .impact-number {
+    font-size: 1.4rem;
+}
+
+.pdf-mode .impact-label {
+    font-size: 0.6rem;
+}
+
+.pdf-mode .value-prop {
+    padding: 0.8rem 1rem;
+    gap: 0.8rem;
+    border-radius: 10px;
+}
+
+.pdf-mode .value-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+}
+
+.pdf-mode .value-text {
+    font-size: 0.75rem;
+}
+
+.pdf-mode .why-me {
+    padding: 1.2rem;
+    margin-bottom: 0.8rem;
+    border-radius: 12px;
+    page-break-inside: avoid;
+}
+
+.pdf-mode .why-me-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.pdf-mode .why-me-grid {
+    gap: 0.8rem;
+}
+
+.pdf-mode .why-item {
+    padding: 0.8rem;
+    border-radius: 10px;
+}
+
+.pdf-mode .why-item i {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.pdf-mode .why-item h4 {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+.pdf-mode .why-item p {
+    font-size: 0.7rem;
+    line-height: 1.3;
+}
+
+.pdf-mode .section {
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.8rem;
+    border-radius: 12px;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+}
+
+.pdf-mode .section-header {
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+}
+
+.pdf-mode .section-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+}
+
+.pdf-mode .section-title {
+    font-size: 1.15rem;
+}
+
+.pdf-mode .experience-grid {
+    gap: 0.6rem;
+}
+
+.pdf-mode .exp-card {
+    padding: 0.7rem 0.9rem;
+    border-radius: 8px;
+    gap: 0.8rem;
+    grid-template-columns: 100px 1fr;
+    page-break-inside: avoid;
+}
+
+.pdf-mode .exp-period {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+    border-radius: 4px;
+}
+
+.pdf-mode .exp-duration {
+    font-size: 0.6rem;
+    margin-top: 0.25rem;
+}
+
+.pdf-mode .exp-content h3 {
+    font-size: 0.85rem;
+    margin-bottom: 0.15rem;
+}
+
+.pdf-mode .exp-company {
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
+}
+
+.pdf-mode .exp-tasks li {
+    font-size: 0.72rem;
+    padding-left: 1rem;
+    margin-bottom: 0.15rem;
+    line-height: 1.4;
+}
+
+.pdf-mode .skills-container {
+    gap: 0.8rem;
+}
+
+.pdf-mode .skill-category {
+    padding: 0.8rem;
+    border-radius: 10px;
+}
+
+.pdf-mode .skill-category-title {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.pdf-mode .skills-list {
+    gap: 0.3rem;
+}
+
+.pdf-mode .skill-pill {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.7rem;
+    border-radius: 12px;
+}
+
+.pdf-mode .soft-grid {
+    gap: 0.5rem;
+}
+
+.pdf-mode .soft-item {
+    padding: 0.5rem 0.7rem;
+    border-radius: 8px;
+    gap: 0.5rem;
+}
+
+.pdf-mode .soft-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 0.7rem;
+    border-radius: 6px;
+}
+
+.pdf-mode .soft-label {
+    font-size: 0.72rem;
+}
+
+.pdf-mode .formation-timeline {
+    padding-left: 1.2rem;
+}
+
+.pdf-mode .formation-item {
+    padding-bottom: 0.7rem;
+    padding-left: 1rem;
+}
+
+.pdf-mode .formation-item::before {
+    left: -1.2rem;
+    width: 10px;
+    height: 10px;
+}
+
+.pdf-mode .formation-year {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.pdf-mode .formation-title {
+    font-size: 0.8rem;
+}
+
+.pdf-mode .formation-school {
+    font-size: 0.7rem;
+}
+
+.pdf-mode footer {
+    display: none;
+}
+
 @media print {
     .export-btn {
         display: none !important;
+    }
+
+    body {
+        background: white !important;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .section, .header, .why-me {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+
+    footer {
+        display: none;
     }
 }
 
@@ -1056,49 +1342,81 @@ document.getElementById('exportPdfBtn').addEventListener('click', async function
     btnIcon.innerHTML = '<div class="spinner"></div>';
     btnIcon.style.display = 'flex';
     btnText.textContent = 'Génération...';
-    document.body.classList.add('pdf-generating');
+
+    // Hide the button during generation
+    btn.style.visibility = 'hidden';
 
     try {
+        const { jsPDF } = window.jspdf;
         const element = document.querySelector('.container');
 
-        // Hide export button during generation
-        btn.style.visibility = 'hidden';
+        // A4 dimensions in mm
+        const a4Width = 210;
+        const a4Height = 297;
+        const margin = 10;
+        const contentWidth = a4Width - (margin * 2);
 
-        const opt = {
-            margin: [8, 8, 8, 8],
-            filename: 'CV_Cyrille_Audureau_Technicien_Support_N2.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: {
-                scale: 2,
-                useCORS: true,
-                logging: false,
-                backgroundColor: '#fdfbf7',
-                windowWidth: 1000,
-                scrollY: 0,
-                scrollX: 0
-            },
-            jsPDF: {
-                unit: 'mm',
-                format: 'a4',
-                orientation: 'portrait'
-            },
-            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-        };
+        // Capture the element as canvas
+        const canvas = await html2canvas(element, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#ffffff',
+            logging: false,
+            width: element.scrollWidth,
+            height: element.scrollHeight,
+            windowWidth: element.scrollWidth
+        });
 
-        // Generate PDF as blob
-        const pdfBlob = await html2pdf().set(opt).from(element).outputPdf('blob');
+        // Calculate dimensions to fit A4
+        const imgWidth = contentWidth;
+        const imgHeight = (canvas.height * contentWidth) / canvas.width;
 
-        // Create download link
+        // Create PDF
+        const pdf = new jsPDF({
+            orientation: 'portrait',
+            unit: 'mm',
+            format: 'a4',
+            compress: true
+        });
+
+        // Calculate how many pages we need
+        const pageHeight = a4Height - (margin * 2);
+        let heightLeft = imgHeight;
+        let position = margin;
+        let pageNumber = 1;
+
+        // Add image to first page
+        const imgData = canvas.toDataURL('image/jpeg', 0.95);
+        pdf.addImage(imgData, 'JPEG', margin, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        // Add additional pages if needed
+        while (heightLeft > 0) {
+            position = heightLeft - imgHeight + margin;
+            pdf.addPage();
+            pdf.addImage(imgData, 'JPEG', margin, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+            pageNumber++;
+        }
+
+        // Generate blob and create download link
+        const pdfBlob = pdf.output('blob');
         const blobUrl = URL.createObjectURL(pdfBlob);
-        const downloadLink = document.createElement('a');
-        downloadLink.href = blobUrl;
-        downloadLink.download = 'CV_Cyrille_Audureau_Technicien_Support_N2.pdf';
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
 
-        // Cleanup blob URL after a delay
-        setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+        // Create and trigger download link
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = 'CV_Cyrille_Audureau_Technicien_Support_N2.pdf';
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+
+        // Cleanup
+        setTimeout(() => {
+            document.body.removeChild(link);
+            URL.revokeObjectURL(blobUrl);
+        }, 100);
 
         // Success state
         btn.style.visibility = 'visible';
@@ -1111,11 +1429,10 @@ document.getElementById('exportPdfBtn').addEventListener('click', async function
             btnIcon.className = originalIcon;
             btnText.textContent = originalText;
             btn.disabled = false;
-            document.body.classList.remove('pdf-generating');
         }, 2500);
 
     } catch (error) {
-        console.error('Erreur PDF:', JSON.stringify(error));
+        console.error('Erreur PDF:', error.message || error);
 
         // Error state
         btn.style.visibility = 'visible';
@@ -1128,7 +1445,6 @@ document.getElementById('exportPdfBtn').addEventListener('click', async function
             btnIcon.className = originalIcon;
             btnText.textContent = originalText;
             btn.disabled = false;
-            document.body.classList.remove('pdf-generating');
         }, 2500);
     }
 });
@@ -1136,4 +1452,3 @@ document.getElementById('exportPdfBtn').addEventListener('click', async function
 
 </body>
 </html>
-
