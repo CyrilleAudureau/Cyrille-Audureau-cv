@@ -635,300 +635,17 @@ footer {
     to { transform: rotate(360deg); }
 }
 
-/* PDF specific styles */
-.pdf-generating .export-btn {
-    pointer-events: none;
-}
-
-/* PDF/Print optimized styles - A4 format */
-.pdf-mode {
-    background: white !important;
-}
-
-.pdf-mode .container {
-    max-width: 210mm;
-    padding: 0;
-    margin: 0 auto;
-}
-
-.pdf-mode body::before {
-    display: none;
-}
-
-.pdf-mode .header {
-    padding: 1.2rem 1.5rem;
-    margin-bottom: 0.8rem;
-    border-radius: 12px;
-    box-shadow: none;
-    border: 1px solid #ddd;
-    page-break-inside: avoid;
-}
-
-.pdf-mode .header::before {
-    display: none;
-}
-
-.pdf-mode .name {
-    font-size: 1.8rem;
-    margin-bottom: 0.3rem;
-}
-
-.pdf-mode .title-badge {
-    padding: 0.35rem 0.9rem;
-    font-size: 0.8rem;
-    margin-bottom: 0.8rem;
-}
-
-.pdf-mode .contact-row {
-    gap: 0.8rem;
-}
-
-.pdf-mode .contact-item {
-    font-size: 0.75rem;
-}
-
-.pdf-mode .contact-item i {
-    width: 20px;
-    height: 20px;
-    font-size: 0.65rem;
-}
-
-.pdf-mode .impact-box {
-    padding: 0.8rem;
-    min-width: 140px;
-    gap: 0.5rem;
-}
-
-.pdf-mode .impact-stat {
-    padding: 0.5rem;
-}
-
-.pdf-mode .impact-number {
-    font-size: 1.4rem;
-}
-
-.pdf-mode .impact-label {
-    font-size: 0.6rem;
-}
-
-.pdf-mode .value-prop {
-    padding: 0.8rem 1rem;
-    gap: 0.8rem;
-    border-radius: 10px;
-}
-
-.pdf-mode .value-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 0.85rem;
-}
-
-.pdf-mode .value-text {
-    font-size: 0.75rem;
-}
-
-.pdf-mode .why-me {
-    padding: 1.2rem;
-    margin-bottom: 0.8rem;
-    border-radius: 12px;
-    page-break-inside: avoid;
-}
-
-.pdf-mode .why-me-title {
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
-}
-
-.pdf-mode .why-me-grid {
-    gap: 0.8rem;
-}
-
-.pdf-mode .why-item {
-    padding: 0.8rem;
-    border-radius: 10px;
-}
-
-.pdf-mode .why-item i {
-    font-size: 1rem;
-    margin-bottom: 0.4rem;
-}
-
-.pdf-mode .why-item h4 {
-    font-size: 0.85rem;
-    margin-bottom: 0.3rem;
-}
-
-.pdf-mode .why-item p {
-    font-size: 0.7rem;
-    line-height: 1.3;
-}
-
-.pdf-mode .section {
-    padding: 1rem 1.2rem;
-    margin-bottom: 0.8rem;
-    border-radius: 12px;
-    box-shadow: none;
-    border: 1px solid #ddd;
-    page-break-inside: avoid;
-}
-
-.pdf-mode .section-header {
-    margin-bottom: 0.8rem;
-    padding-bottom: 0.5rem;
-}
-
-.pdf-mode .section-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 0.9rem;
-    border-radius: 8px;
-}
-
-.pdf-mode .section-title {
-    font-size: 1.15rem;
-}
-
-.pdf-mode .experience-grid {
-    gap: 0.6rem;
-}
-
-.pdf-mode .exp-card {
-    padding: 0.7rem 0.9rem;
-    border-radius: 8px;
-    gap: 0.8rem;
-    grid-template-columns: 100px 1fr;
-    page-break-inside: avoid;
-}
-
-.pdf-mode .exp-period {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.65rem;
-    border-radius: 4px;
-}
-
-.pdf-mode .exp-duration {
-    font-size: 0.6rem;
-    margin-top: 0.25rem;
-}
-
-.pdf-mode .exp-content h3 {
-    font-size: 0.85rem;
-    margin-bottom: 0.15rem;
-}
-
-.pdf-mode .exp-company {
-    font-size: 0.75rem;
-    margin-bottom: 0.4rem;
-}
-
-.pdf-mode .exp-tasks li {
-    font-size: 0.72rem;
-    padding-left: 1rem;
-    margin-bottom: 0.15rem;
-    line-height: 1.4;
-}
-
-.pdf-mode .skills-container {
-    gap: 0.8rem;
-}
-
-.pdf-mode .skill-category {
-    padding: 0.8rem;
-    border-radius: 10px;
-}
-
-.pdf-mode .skill-category-title {
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
-}
-
-.pdf-mode .skills-list {
-    gap: 0.3rem;
-}
-
-.pdf-mode .skill-pill {
-    padding: 0.25rem 0.6rem;
-    font-size: 0.7rem;
-    border-radius: 12px;
-}
-
-.pdf-mode .soft-grid {
-    gap: 0.5rem;
-}
-
-.pdf-mode .soft-item {
-    padding: 0.5rem 0.7rem;
-    border-radius: 8px;
-    gap: 0.5rem;
-}
-
-.pdf-mode .soft-icon {
-    width: 26px;
-    height: 26px;
-    font-size: 0.7rem;
-    border-radius: 6px;
-}
-
-.pdf-mode .soft-label {
-    font-size: 0.72rem;
-}
-
-.pdf-mode .formation-timeline {
-    padding-left: 1.2rem;
-}
-
-.pdf-mode .formation-item {
-    padding-bottom: 0.7rem;
-    padding-left: 1rem;
-}
-
-.pdf-mode .formation-item::before {
-    left: -1.2rem;
-    width: 10px;
-    height: 10px;
-}
-
-.pdf-mode .formation-year {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.5rem;
-    margin-bottom: 0.25rem;
-}
-
-.pdf-mode .formation-title {
-    font-size: 0.8rem;
-}
-
-.pdf-mode .formation-school {
-    font-size: 0.7rem;
-}
-
-.pdf-mode footer {
-    display: none;
+/* Export button states */
+.export-btn:disabled {
+    cursor: not-allowed;
 }
 
 @media print {
-    .export-btn {
-        display: none !important;
-    }
-
-    body {
-        background: white !important;
-    }
-
-    .container {
-        max-width: 100%;
-        padding: 0;
-    }
-
-    .section, .header, .why-me {
-        box-shadow: none;
-        border: 1px solid #ddd;
-        page-break-inside: avoid;
-    }
-
-    footer {
-        display: none;
-    }
+    .export-btn { display: none !important; }
+    body { background: white !important; }
+    .container { max-width: 100%; padding: 0; }
+    .section, .header, .why-me { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; }
+    footer { display: none; }
 }
 
 /* Responsive */
@@ -973,12 +690,6 @@ footer {
         flex-direction: column;
         gap: 1rem;
     }
-}
-
-@media print {
-    body { background: white; }
-    .section, .header, .why-me { box-shadow: none; border: 1px solid #ddd; }
-    footer { display: none; }
 }
 </style>
 </head>
@@ -1328,124 +1039,125 @@ footer {
 
 <script>
 document.getElementById('exportPdfBtn').addEventListener('click', async function() {
-    const btn = this;
-    const btnIcon = btn.querySelector('i');
-    const btnText = btn.querySelector('span');
+    var btn = this;
+    var btnIcon = btn.querySelector('i');
+    var btnText = btn.querySelector('span');
 
-    // Save original state
-    const originalIcon = btnIcon.className;
-    const originalText = btnText.textContent;
+    var originalIcon = btnIcon.className;
+    var originalText = btnText.textContent;
 
-    // Show loading state
     btn.disabled = true;
     btnIcon.className = '';
     btnIcon.innerHTML = '<div class="spinner"></div>';
     btnIcon.style.display = 'flex';
     btnText.textContent = 'Génération...';
-
-    // Hide the button during generation
     btn.style.visibility = 'hidden';
 
+    function resetBtn(iconClass, text) {
+        btn.style.visibility = 'visible';
+        btnIcon.innerHTML = '';
+        btnIcon.className = iconClass;
+        btnText.textContent = text;
+        setTimeout(function() {
+            btnIcon.className = originalIcon;
+            btnText.textContent = originalText;
+            btn.disabled = false;
+        }, 2500);
+    }
+
     try {
-        const { jsPDF } = window.jspdf;
-        const element = document.querySelector('.container');
+        var jsPDF = window.jspdf.jsPDF;
 
-        // A4 dimensions in mm
-        const a4Width = 210;
-        const a4Height = 297;
-        const margin = 10;
-        const contentWidth = a4Width - (margin * 2);
+        // A4 in px at 96 DPI = 794 x 1123
+        var PDF_WIDTH_PX = 794;
+        var SCALE = 2;
+        var A4_W_MM = 210;
+        var A4_H_MM = 297;
+        var MARGIN_MM = 8;
+        var CONTENT_W_MM = A4_W_MM - MARGIN_MM * 2;
+        var CONTENT_H_MM = A4_H_MM - MARGIN_MM * 2;
+        var TOTAL_PAGES = 2;
 
-        // Capture the element as canvas
-        const canvas = await html2canvas(element, {
-            scale: 2,
+        // Total usable height in mm for 2 pages
+        var totalContentHeightMM = CONTENT_H_MM * TOTAL_PAGES;
+
+        // Capture the full container at a fixed width
+        var element = document.querySelector('.container');
+        var canvas = await html2canvas(element, {
+            scale: SCALE,
             useCORS: true,
             allowTaint: true,
             backgroundColor: '#ffffff',
             logging: false,
-            width: element.scrollWidth,
-            height: element.scrollHeight,
-            windowWidth: element.scrollWidth
+            width: PDF_WIDTH_PX,
+            windowWidth: PDF_WIDTH_PX
         });
 
-        // Calculate dimensions to fit A4
-        const imgWidth = contentWidth;
-        const imgHeight = (canvas.height * contentWidth) / canvas.width;
+        // Source canvas dimensions (in canvas pixels)
+        var srcW = canvas.width;
+        var srcH = canvas.height;
 
-        // Create PDF
-        const pdf = new jsPDF({
-            orientation: 'portrait',
-            unit: 'mm',
-            format: 'a4',
-            compress: true
-        });
+        // The rendered content height in mm if we fit width to CONTENT_W_MM
+        var renderedHeightMM = (srcH / srcW) * CONTENT_W_MM;
 
-        // Calculate how many pages we need
-        const pageHeight = a4Height - (margin * 2);
-        let heightLeft = imgHeight;
-        let position = margin;
-        let pageNumber = 1;
-
-        // Add image to first page
-        const imgData = canvas.toDataURL('image/jpeg', 0.95);
-        pdf.addImage(imgData, 'JPEG', margin, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-
-        // Add additional pages if needed
-        while (heightLeft > 0) {
-            position = heightLeft - imgHeight + margin;
-            pdf.addPage();
-            pdf.addImage(imgData, 'JPEG', margin, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-            pageNumber++;
+        // Calculate the scale to fit in exactly 2 pages
+        var scaleFactor = 1;
+        if (renderedHeightMM > totalContentHeightMM) {
+            scaleFactor = totalContentHeightMM / renderedHeightMM;
         }
 
-        // Generate blob and create download link
-        const pdfBlob = pdf.output('blob');
-        const blobUrl = URL.createObjectURL(pdfBlob);
+        var finalW = CONTENT_W_MM * scaleFactor;
+        var finalH = renderedHeightMM * scaleFactor;
+        var xOffset = MARGIN_MM + (CONTENT_W_MM - finalW) / 2;
 
-        // Create and trigger download link
-        const link = document.createElement('a');
+        // Height per page in source canvas pixels
+        var pageHeightInCanvasPx = (CONTENT_H_MM / finalH) * srcH;
+
+        // Create PDF
+        var pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4', compress: true });
+
+        // Use an offscreen canvas to slice each page
+        for (var p = 0; p < TOTAL_PAGES; p++) {
+            if (p > 0) pdf.addPage();
+
+            var srcY = Math.round(p * pageHeightInCanvasPx);
+            var sliceH = Math.round(Math.min(pageHeightInCanvasPx, srcH - srcY));
+            if (sliceH <= 0) break;
+
+            // Create a sub-canvas for this page slice
+            var pageCanvas = document.createElement('canvas');
+            pageCanvas.width = srcW;
+            pageCanvas.height = sliceH;
+            var ctx = pageCanvas.getContext('2d');
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, srcW, sliceH);
+            ctx.drawImage(canvas, 0, srcY, srcW, sliceH, 0, 0, srcW, sliceH);
+
+            var pageImgData = pageCanvas.toDataURL('image/jpeg', 0.92);
+            var sliceHeightMM = (sliceH / srcH) * finalH;
+
+            pdf.addImage(pageImgData, 'JPEG', xOffset, MARGIN_MM, finalW, sliceHeightMM);
+        }
+
+        // Generate blob and trigger download
+        var pdfBlob = pdf.output('blob');
+        var blobUrl = URL.createObjectURL(pdfBlob);
+        var link = document.createElement('a');
         link.href = blobUrl;
         link.download = 'CV_Cyrille_Audureau_Technicien_Support_N2.pdf';
         link.style.display = 'none';
         document.body.appendChild(link);
         link.click();
-
-        // Cleanup
-        setTimeout(() => {
+        setTimeout(function() {
             document.body.removeChild(link);
             URL.revokeObjectURL(blobUrl);
-        }, 100);
+        }, 200);
 
-        // Success state
-        btn.style.visibility = 'visible';
-        btnIcon.innerHTML = '';
-        btnIcon.className = 'fas fa-check';
-        btnText.textContent = 'Téléchargé !';
-
-        // Reset after delay
-        setTimeout(() => {
-            btnIcon.className = originalIcon;
-            btnText.textContent = originalText;
-            btn.disabled = false;
-        }, 2500);
+        resetBtn('fas fa-check', 'Téléchargé !');
 
     } catch (error) {
-        console.error('Erreur PDF:', error.message || error);
-
-        // Error state
-        btn.style.visibility = 'visible';
-        btnIcon.innerHTML = '';
-        btnIcon.className = 'fas fa-exclamation-triangle';
-        btnText.textContent = 'Erreur';
-
-        // Reset after delay
-        setTimeout(() => {
-            btnIcon.className = originalIcon;
-            btnText.textContent = originalText;
-            btn.disabled = false;
-        }, 2500);
+        console.error('Erreur PDF: ' + (error.message || error));
+        resetBtn('fas fa-exclamation-triangle', 'Erreur');
     }
 });
 </script>
