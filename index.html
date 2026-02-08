@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
@@ -1038,11 +1037,10 @@ footer {
 </button>
 
 <script>
-document.getElementById('exportPdfBtn').addEventListener('click', async function() {
+document.getElementById('exportPdfBtn').addEventListener('click', function() {
     var btn = this;
     var btnIcon = btn.querySelector('i');
     var btnText = btn.querySelector('span');
-
     var originalIcon = btnIcon.className;
     var originalText = btnText.textContent;
 
@@ -1067,79 +1065,401 @@ document.getElementById('exportPdfBtn').addEventListener('click', async function
 
     try {
         var jsPDF = window.jspdf.jsPDF;
-
-        // A4 in px at 96 DPI = 794 x 1123
-        var PDF_WIDTH_PX = 794;
-        var SCALE = 2;
-        var A4_W_MM = 210;
-        var A4_H_MM = 297;
-        var MARGIN_MM = 8;
-        var CONTENT_W_MM = A4_W_MM - MARGIN_MM * 2;
-        var CONTENT_H_MM = A4_H_MM - MARGIN_MM * 2;
-        var TOTAL_PAGES = 2;
-
-        // Total usable height in mm for 2 pages
-        var totalContentHeightMM = CONTENT_H_MM * TOTAL_PAGES;
-
-        // Capture the full container at a fixed width
-        var element = document.querySelector('.container');
-        var canvas = await html2canvas(element, {
-            scale: SCALE,
-            useCORS: true,
-            allowTaint: true,
-            backgroundColor: '#ffffff',
-            logging: false,
-            width: PDF_WIDTH_PX,
-            windowWidth: PDF_WIDTH_PX
-        });
-
-        // Source canvas dimensions (in canvas pixels)
-        var srcW = canvas.width;
-        var srcH = canvas.height;
-
-        // The rendered content height in mm if we fit width to CONTENT_W_MM
-        var renderedHeightMM = (srcH / srcW) * CONTENT_W_MM;
-
-        // Calculate the scale to fit in exactly 2 pages
-        var scaleFactor = 1;
-        if (renderedHeightMM > totalContentHeightMM) {
-            scaleFactor = totalContentHeightMM / renderedHeightMM;
-        }
-
-        var finalW = CONTENT_W_MM * scaleFactor;
-        var finalH = renderedHeightMM * scaleFactor;
-        var xOffset = MARGIN_MM + (CONTENT_W_MM - finalW) / 2;
-
-        // Height per page in source canvas pixels
-        var pageHeightInCanvasPx = (CONTENT_H_MM / finalH) * srcH;
-
-        // Create PDF
         var pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4', compress: true });
 
-        // Use an offscreen canvas to slice each page
-        for (var p = 0; p < TOTAL_PAGES; p++) {
-            if (p > 0) pdf.addPage();
+        // Colors
+        var C_PRIMARY = [196, 92, 38];
+        var C_SECONDARY = [45, 90, 74];
+        var C_GOLD = [212, 168, 83];
+        var C_DARK = [26, 26, 26];
+        var C_MEDIUM = [74, 74, 74];
+        var C_LIGHT = [113, 113, 113];
+        var C_WHITE = [255, 255, 255];
+        var C_BG = [247, 243, 237];
 
-            var srcY = Math.round(p * pageHeightInCanvasPx);
-            var sliceH = Math.round(Math.min(pageHeightInCanvasPx, srcH - srcY));
-            if (sliceH <= 0) break;
+        var PW = 210, PH = 297;
+        var ML = 12, MR = 12, MT = 12;
+        var CW = PW - ML - MR;
+        var y = MT;
 
-            // Create a sub-canvas for this page slice
-            var pageCanvas = document.createElement('canvas');
-            pageCanvas.width = srcW;
-            pageCanvas.height = sliceH;
-            var ctx = pageCanvas.getContext('2d');
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(0, 0, srcW, sliceH);
-            ctx.drawImage(canvas, 0, srcY, srcW, sliceH, 0, 0, srcW, sliceH);
-
-            var pageImgData = pageCanvas.toDataURL('image/jpeg', 0.92);
-            var sliceHeightMM = (sliceH / srcH) * finalH;
-
-            pdf.addImage(pageImgData, 'JPEG', xOffset, MARGIN_MM, finalW, sliceHeightMM);
+        // Helper: rounded rect
+        function rRect(x, yy, w, h, r, fillColor, strokeColor) {
+            if (fillColor) { pdf.setFillColor(fillColor[0], fillColor[1], fillColor[2]); }
+            if (strokeColor) { pdf.setDrawColor(strokeColor[0], strokeColor[1], strokeColor[2]); pdf.setLineWidth(0.3); }
+            pdf.roundedRect(x, yy, w, h, r, r, fillColor && strokeColor ? 'FD' : fillColor ? 'F' : 'S');
         }
 
-        // Generate blob and trigger download
+        // Helper: text with wrapping, returns new Y
+        function writeText(text, x, yy, maxW, fontSize, fontStyle, color, lineH) {
+            pdf.setFontSize(fontSize);
+            pdf.setFont('helvetica', fontStyle || 'normal');
+            pdf.setTextColor(color[0], color[1], color[2]);
+            var lines = pdf.splitTextToSize(text, maxW);
+            var lh = lineH || fontSize * 0.42;
+            for (var i = 0; i < lines.length; i++) {
+                pdf.text(lines[i], x, yy);
+                yy += lh;
+            }
+            return yy;
+        }
+
+        // Helper: section title with colored bar
+        function sectionTitle(title, yy) {
+            rRect(ML, yy, 3, 7, 1, C_PRIMARY, null);
+            pdf.setFont('helvetica', 'bold');
+            pdf.setFontSize(13);
+            pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
+            pdf.text(title, ML + 6, yy + 5.2);
+            pdf.setDrawColor(230, 230, 230);
+            pdf.setLineWidth(0.3);
+            pdf.line(ML, yy + 9, PW - MR, yy + 9);
+            return yy + 13;
+        }
+
+        // Helper: check page overflow
+        function checkPage(needed) {
+            if (y + needed > PH - 10) {
+                pdf.addPage();
+                y = MT;
+            }
+        }
+
+        // ============================================================
+        //  PAGE 1
+        // ============================================================
+
+        // --- HEADER BACKGROUND ---
+        rRect(ML, y, CW, 46, 4, [253, 251, 247], [230, 220, 210]);
+
+        // Gradient accent line at bottom of header
+        pdf.setLineWidth(1.2);
+        pdf.setDrawColor(C_PRIMARY[0], C_PRIMARY[1], C_PRIMARY[2]);
+        pdf.line(ML, y + 46, ML + CW / 3, y + 46);
+        pdf.setDrawColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
+        pdf.line(ML + CW / 3, y + 46, ML + 2 * CW / 3, y + 46);
+        pdf.setDrawColor(C_SECONDARY[0], C_SECONDARY[1], C_SECONDARY[2]);
+        pdf.line(ML + 2 * CW / 3, y + 46, PW - MR, y + 46);
+
+        // Name
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(24);
+        pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
+        pdf.text('Cyrille Audureau', ML + 5, y + 10);
+
+        // Title badge
+        rRect(ML + 5, y + 13, 52, 7, 3, C_PRIMARY, null);
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(9);
+        pdf.setTextColor(255, 255, 255);
+        pdf.text('Technicien Support N2', ML + 8, y + 17.8);
+
+        // Contact info
+        var contactY = y + 25;
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(7.5);
+        pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
+
+        var contacts = [
+            '06 98 72 73 37',
+            'cyrille44tech@protonmail.com',
+            '44700 Orvault',
+            'Permis B'
+        ];
+        var cX = ML + 5;
+        for (var ci = 0; ci < contacts.length; ci++) {
+            pdf.text(contacts[ci], cX, contactY);
+            cX += pdf.getTextWidth(contacts[ci]) + 6;
+            if (ci < contacts.length - 1) {
+                pdf.setTextColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
+                pdf.text('|', cX - 4, contactY);
+                pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
+            }
+        }
+
+        // Impact stats
+        var statX = PW - MR - 40;
+        rRect(statX, y + 3, 35, 17, 3, C_WHITE, [230, 220, 210]);
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(16);
+        pdf.setTextColor(C_PRIMARY[0], C_PRIMARY[1], C_PRIMARY[2]);
+        pdf.text('30+', statX + 17.5, y + 10.5, { align: 'center' });
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(5.5);
+        pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
+        pdf.text("ANS D'EXP\u00c9RIENCE", statX + 17.5, y + 14.5, { align: 'center' });
+
+        rRect(statX, y + 23, 35, 17, 3, C_WHITE, [230, 220, 210]);
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(16);
+        pdf.setTextColor(C_PRIMARY[0], C_PRIMARY[1], C_PRIMARY[2]);
+        pdf.text('15+', statX + 17.5, y + 30.5, { align: 'center' });
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(5.5);
+        pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
+        pdf.text('ANS EN IT', statX + 17.5, y + 34.5, { align: 'center' });
+
+        // Value proposition bar
+        var vpY = y + 31;
+        var vpItems = [
+            'Form\u00e9 IA & Automatisation en 2024',
+            'Expert formation & tutorat collaborateurs',
+            'Parcours \u00e9volutif : terrain \u2192 IT'
+        ];
+        rRect(ML + 5, vpY, CW - 50, 8, 3, C_SECONDARY, null);
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(6.8);
+        pdf.setTextColor(255, 255, 255);
+        var vpX = ML + 8;
+        for (var vi = 0; vi < vpItems.length; vi++) {
+            pdf.text(vpItems[vi], vpX, vpY + 5);
+            vpX += pdf.getTextWidth(vpItems[vi]) + 6;
+            if (vi < vpItems.length - 1) {
+                pdf.text('\u00b7', vpX - 4, vpY + 5);
+            }
+        }
+
+        y += 52;
+
+        // --- POURQUOI ME RECRUTER ---
+        rRect(ML, y, CW, 28, 4, C_PRIMARY, null);
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(12);
+        pdf.setTextColor(255, 255, 255);
+        pdf.text('Pourquoi me recruter ?', PW / 2, y + 7, { align: 'center' });
+
+        var whyItems = [
+            { title: 'Double comp\u00e9tence', desc: 'Expertise technique IT + sens business acquis sur le terrain (management, commerce, production)' },
+            { title: 'Transmission du savoir', desc: "Formateur naturel, j'ai accompagn\u00e9 et tutor\u00e9 de nombreux collaborateurs avec p\u00e9dagogie" },
+            { title: 'Vision moderne', desc: 'Form\u00e9 aux outils IA et No-code en 2024 pour optimiser les processus support' }
+        ];
+        var whyW = (CW - 16) / 3;
+        for (var wi = 0; wi < whyItems.length; wi++) {
+            var wx = ML + 4 + wi * (whyW + 4);
+            rRect(wx, y + 10, whyW, 15, 2, [216, 116, 62], null);
+            pdf.setFont('helvetica', 'bold');
+            pdf.setFontSize(7.5);
+            pdf.setTextColor(255, 255, 255);
+            pdf.text(whyItems[wi].title, wx + 3, y + 14.5);
+            pdf.setFont('helvetica', 'normal');
+            pdf.setFontSize(6);
+            var wLines = pdf.splitTextToSize(whyItems[wi].desc, whyW - 6);
+            for (var wl = 0; wl < wLines.length; wl++) {
+                pdf.text(wLines[wl], wx + 3, y + 18 + wl * 2.8);
+            }
+        }
+        y += 32;
+
+        // --- PARCOURS PROFESSIONNEL ---
+        y = sectionTitle('Parcours professionnel', y);
+
+        var experiences = [
+            { period: '2021 \u2013 2026', duration: '5 ans', title: 'Technicien Support N2', company: 'Liciel Environnement \u2013 Saint-Herblain',
+              tasks: ["Support et formation logiciels pour professionnels de l'immobilier", 'Tutorat des nouveaux collaborateurs', "Personnalisation et am\u00e9lioration des solutions clients", "Suivi des objectifs de qualit\u00e9 et de performance"] },
+            { period: '2019 \u2013 2021', duration: '2 ans', title: 'Technicien Support N2', company: 'Logicmax Technologie \u2013 Nantes',
+              tasks: ["Support et formation logiciels pour professionnels de sant\u00e9", "Accompagnement utilisateurs et r\u00e9solution d'incidents", 'Tutorat des nouveaux collaborateurs'] },
+            { period: '2012 \u2013 2019', duration: '7 ans', title: "Technicien d'exploitation & Support N2", company: 'Sodebo',
+              tasks: ['Support informatique niveau 2', 'Exploitation Windows, Windows Server, macOS et Citrix', "G\u00e9stion t\u00e9l\u00e9phonie fixe et mobile", "C\u00e2blage r\u00e9seau cuivre et fibre optique"] },
+            { period: '2010 \u2013 2012', duration: '2 ans', title: "Assistant ADV, Comptabilit\u00e9 & Statistiques", company: 'Sodebo',
+              tasks: ["Gestion des tableaux de bord et analyses statistiques", "Relance impay\u00e9s et gestion comptable", "Support \u00e0 la force de vente"] },
+            { period: '2003 \u2013 2009', duration: '6 ans', title: "Chef d'\u00e9quipe agro-alimentaire", company: 'Sodebo',
+              tasks: ["Management d'une \u00e9quipe de 15 personnes", 'Gestion de la production industrielle'] },
+            { period: '1995 \u2013 2002', duration: '7 ans', title: "Responsable secteur \u00e9picerie", company: "Intermarch\u00e9 / Leclerc",
+              tasks: ["Management d'une \u00e9quipe de 8 personnes", "Gestion approvisionnement et merchandising"] }
+        ];
+
+        for (var ei = 0; ei < experiences.length; ei++) {
+            var exp = experiences[ei];
+            var taskCount = exp.tasks.length;
+            var cardH = 8 + taskCount * 3.5;
+            checkPage(cardH + 2);
+
+            // Left accent line
+            pdf.setDrawColor(C_PRIMARY[0], C_PRIMARY[1], C_PRIMARY[2]);
+            pdf.setLineWidth(1);
+            pdf.line(ML, y, ML, y + cardH);
+
+            // Period badge
+            rRect(ML + 2, y, 24, 5, 1.5, C_PRIMARY, null);
+            pdf.setFont('helvetica', 'bold');
+            pdf.setFontSize(6.5);
+            pdf.setTextColor(255, 255, 255);
+            pdf.text(exp.period, ML + 3.5, y + 3.5);
+
+            // Duration
+            pdf.setFont('helvetica', 'normal');
+            pdf.setFontSize(6);
+            pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
+            pdf.text(exp.duration, ML + 28, y + 3.5);
+
+            // Job title
+            pdf.setFont('helvetica', 'bold');
+            pdf.setFontSize(8.5);
+            pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
+            pdf.text(exp.title, ML + 42, y + 3.5);
+
+            // Company
+            pdf.setFont('helvetica', 'normal');
+            pdf.setFontSize(7);
+            pdf.setTextColor(C_SECONDARY[0], C_SECONDARY[1], C_SECONDARY[2]);
+            pdf.text(exp.company, ML + 42, y + 7);
+
+            // Tasks
+            pdf.setFont('helvetica', 'normal');
+            pdf.setFontSize(6.5);
+            pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
+            for (var ti = 0; ti < exp.tasks.length; ti++) {
+                pdf.setTextColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
+                pdf.text('\u2713', ML + 43, y + 10.5 + ti * 3.5);
+                pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
+                pdf.text(exp.tasks[ti], ML + 47, y + 10.5 + ti * 3.5);
+            }
+
+            y += cardH + 3;
+        }
+
+        // ============================================================
+        //  PAGE 2
+        // ============================================================
+        pdf.addPage();
+        y = MT;
+
+        // --- COMPETENCES TECHNIQUES ---
+        y = sectionTitle('Comp\u00e9tences techniques', y);
+
+        var skillCategories = [
+            { title: 'Support & Formation', skills: ['Support N2', 'Support applicatif', 'Formation utilisateurs', 'Tutorat', 'ITSM'], featured: [0, 1] },
+            { title: "Syst\u00e8mes & Infrastructure", skills: ['Windows', 'Windows Server', 'macOS', 'Citrix', "S\u00e9curit\u00e9 poste"], featured: [] },
+            { title: "R\u00e9seaux & T\u00e9l\u00e9com", skills: ["R\u00e9seaux TCP/IP", "C\u00e2blage cuivre & fibre", "T\u00e9l\u00e9phonie"], featured: [] },
+            { title: 'Innovation & Avenir', skills: ['IA & Automatisation', 'No-code'], featured: [0, 1] }
+        ];
+
+        var catW = (CW - 6) / 2;
+        for (var si = 0; si < skillCategories.length; si++) {
+            var cat = skillCategories[si];
+            var col = si % 2;
+            var catX = ML + col * (catW + 6);
+            if (si % 2 === 0 && si > 0) { y += 22; }
+            var catY = (si < 2) ? y : y;
+
+            rRect(catX, catY, catW, 19, 3, [253, 251, 247], null);
+
+            pdf.setFont('helvetica', 'bold');
+            pdf.setFontSize(7.5);
+            pdf.setTextColor(C_SECONDARY[0], C_SECONDARY[1], C_SECONDARY[2]);
+            pdf.text(cat.title, catX + 4, catY + 5.5);
+
+            var pillX = catX + 4;
+            var pillY = catY + 9;
+            for (var pi = 0; pi < cat.skills.length; pi++) {
+                var skill = cat.skills[pi];
+                var tw = pdf.getTextWidth(skill) + 5;
+                if (pillX + tw > catX + catW - 3) {
+                    pillX = catX + 4;
+                    pillY += 5.5;
+                }
+                var isFeatured = cat.featured.indexOf(pi) !== -1;
+                if (isFeatured) {
+                    rRect(pillX, pillY - 3, tw + 1, 5, 2, C_PRIMARY, null);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.setFontSize(6.2);
+                    pdf.setTextColor(255, 255, 255);
+                } else {
+                    rRect(pillX, pillY - 3, tw + 1, 5, 2, C_WHITE, [220, 215, 210]);
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.setFontSize(6.2);
+                    pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
+                }
+                pdf.text(skill, pillX + 2.5, pillY + 0.5);
+                pillX += tw + 3;
+            }
+        }
+        y += 46;
+
+        // --- SAVOIR-ETRE ---
+        y = sectionTitle('Savoir-\u00eatre', y);
+
+        var softSkills = [
+            'Sens du service', 'P\u00e9dagogie', 'Autonomie', 'Rigueur', 'Fiabilit\u00e9',
+            "Esprit d'\u00e9quipe", 'Analyse', 'Gestion des priorit\u00e9s', 'Adaptabilit\u00e9', 'Am\u00e9lioration continue'
+        ];
+
+        var ssColW = (CW - 12) / 5;
+        for (var ssi = 0; ssi < softSkills.length; ssi++) {
+            var ssCol = ssi % 5;
+            var ssRow = Math.floor(ssi / 5);
+            var ssX = ML + ssCol * (ssColW + 3);
+            var ssY = y + ssRow * 9;
+
+            rRect(ssX, ssY, ssColW, 7, 2, [253, 251, 247], null);
+
+            // Colored dot
+            pdf.setFillColor(C_SECONDARY[0], C_SECONDARY[1], C_SECONDARY[2]);
+            pdf.circle(ssX + 4, ssY + 3.5, 1.5, 'F');
+
+            pdf.setFont('helvetica', 'normal');
+            pdf.setFontSize(6.2);
+            pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
+            pdf.text(softSkills[ssi], ssX + 7.5, ssY + 4.5);
+        }
+        y += 22;
+
+        // --- FORMATION & CERTIFICATIONS ---
+        y = sectionTitle('Formation & Certifications', y);
+
+        var formations = [
+            { year: '2024', title: "Formation IA \u2013 Automation & No-code", school: "\u00c9cole CUBE" },
+            { year: '2018', title: "MOOC S\u00e9curit\u00e9 authentification & nomadisme", school: 'ANSSI' },
+            { year: '2018', title: "BULATS A2 \u2013 Anglais", school: 'Cambridge' },
+            { year: '2008', title: 'Technicien de maintenance informatique', school: 'CNFDI Paris' },
+            { year: '1994', title: "Pr\u00e9pa Expertise Comptable & Baccalaur\u00e9at Comptabilit\u00e9", school: "Lyc\u00e9e Albert Camus & Sacr\u00e9 C\u0153ur, Nantes" }
+        ];
+
+        // Timeline line
+        pdf.setDrawColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
+        pdf.setLineWidth(0.4);
+        pdf.line(ML + 4, y, ML + 4, y + formations.length * 11 - 3);
+
+        for (var fi = 0; fi < formations.length; fi++) {
+            var f = formations[fi];
+            var fY = y + fi * 11;
+
+            // Timeline dot
+            pdf.setFillColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
+            pdf.circle(ML + 4, fY + 2, 2, 'F');
+            pdf.setFillColor(255, 255, 255);
+            pdf.circle(ML + 4, fY + 2, 1, 'F');
+
+            // Year badge
+            rRect(ML + 10, fY - 0.5, 13, 5, 1.5, [247, 243, 237], null);
+            pdf.setFont('helvetica', 'bold');
+            pdf.setFontSize(6.5);
+            pdf.setTextColor(C_PRIMARY[0], C_PRIMARY[1], C_PRIMARY[2]);
+            pdf.text(f.year, ML + 12, fY + 3);
+
+            // Title
+            pdf.setFont('helvetica', 'bold');
+            pdf.setFontSize(7.5);
+            pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
+            pdf.text(f.title, ML + 26, fY + 3);
+
+            // School
+            pdf.setFont('helvetica', 'normal');
+            pdf.setFontSize(6.5);
+            pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
+            pdf.text(f.school, ML + 26, fY + 7);
+        }
+
+        // --- FOOTER LINE ---
+        y = PH - 12;
+        pdf.setDrawColor(230, 230, 230);
+        pdf.setLineWidth(0.2);
+        pdf.line(ML, y, PW - MR, y);
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(6);
+        pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
+        pdf.text('\u00a9 2026 \u2013 Cyrille Audureau', PW / 2, y + 4, { align: 'center' });
+
+        // --- DOWNLOAD ---
         var pdfBlob = pdf.output('blob');
         var blobUrl = URL.createObjectURL(pdfBlob);
         var link = document.createElement('a');
@@ -1151,9 +1471,9 @@ document.getElementById('exportPdfBtn').addEventListener('click', async function
         setTimeout(function() {
             document.body.removeChild(link);
             URL.revokeObjectURL(blobUrl);
-        }, 200);
+        }, 300);
 
-        resetBtn('fas fa-check', 'Téléchargé !');
+        resetBtn('fas fa-check', 'T\u00e9l\u00e9charg\u00e9 !');
 
     } catch (error) {
         console.error('Erreur PDF: ' + (error.message || error));
@@ -1164,3 +1484,5 @@ document.getElementById('exportPdfBtn').addEventListener('click', async function
 
 </body>
 </html>
+
+
