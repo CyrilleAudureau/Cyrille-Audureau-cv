@@ -1203,7 +1203,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         var vpItems = [
             'Form\u00e9 IA & Automatisation en 2024',
             'Expert formation & tutorat collaborateurs',
-            'Parcours \u00e9volutif : terrain \u2192 IT'
+            'Parcours \u00e9volutif : terrain -> IT'
         ];
         rRect(ML + 5, vpY, CW - 50, 8, 3, C_SECONDARY, null);
         pdf.setFont('helvetica', 'normal');
@@ -1253,17 +1253,17 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         y = sectionTitle('Parcours professionnel', y);
 
         var experiences = [
-            { period: '2021 \u2013 2026', duration: '5 ans', title: 'Technicien Support N2', company: 'Liciel Environnement \u2013 Saint-Herblain',
+            { period: '2021 - 2026', duration: '5 ans', title: 'Technicien Support N2', company: 'Liciel Environnement - Saint-Herblain',
               tasks: ["Support et formation logiciels pour professionnels de l'immobilier", 'Tutorat des nouveaux collaborateurs', "Personnalisation et am\u00e9lioration des solutions clients", "Suivi des objectifs de qualit\u00e9 et de performance"] },
-            { period: '2019 \u2013 2021', duration: '2 ans', title: 'Technicien Support N2', company: 'Logicmax Technologie \u2013 Nantes',
+            { period: '2019 - 2021', duration: '2 ans', title: 'Technicien Support N2', company: 'Logicmax Technologie - Nantes',
               tasks: ["Support et formation logiciels pour professionnels de sant\u00e9", "Accompagnement utilisateurs et r\u00e9solution d'incidents", 'Tutorat des nouveaux collaborateurs'] },
-            { period: '2012 \u2013 2019', duration: '7 ans', title: "Technicien d'exploitation & Support N2", company: 'Sodebo',
+            { period: '2012 - 2019', duration: '7 ans', title: "Technicien d'exploitation & Support N2", company: 'Sodebo',
               tasks: ['Support informatique niveau 2', 'Exploitation Windows, Windows Server, macOS et Citrix', "G\u00e9stion t\u00e9l\u00e9phonie fixe et mobile", "C\u00e2blage r\u00e9seau cuivre et fibre optique"] },
-            { period: '2010 \u2013 2012', duration: '2 ans', title: "Assistant ADV, Comptabilit\u00e9 & Statistiques", company: 'Sodebo',
+            { period: '2010 - 2012', duration: '2 ans', title: "Assistant ADV, Comptabilit\u00e9 & Statistiques", company: 'Sodebo',
               tasks: ["Gestion des tableaux de bord et analyses statistiques", "Relance impay\u00e9s et gestion comptable", "Support \u00e0 la force de vente"] },
-            { period: '2003 \u2013 2009', duration: '6 ans', title: "Chef d'\u00e9quipe agro-alimentaire", company: 'Sodebo',
+            { period: '2003 - 2009', duration: '6 ans', title: "Chef d'\u00e9quipe agro-alimentaire", company: 'Sodebo',
               tasks: ["Management d'une \u00e9quipe de 15 personnes", 'Gestion de la production industrielle'] },
-            { period: '1995 \u2013 2002', duration: '7 ans', title: "Responsable secteur \u00e9picerie", company: "Intermarch\u00e9 / Leclerc",
+            { period: '1995 - 2002', duration: '7 ans', title: "Responsable secteur \u00e9picerie", company: "Intermarch\u00e9 / Leclerc",
               tasks: ["Management d'une \u00e9quipe de 8 personnes", "Gestion approvisionnement et merchandising"] }
         ];
 
@@ -1309,7 +1309,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
             pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
             for (var ti = 0; ti < exp.tasks.length; ti++) {
                 pdf.setTextColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
-                pdf.text('\u2713', ML + 43, y + 10.5 + ti * 3.5);
+                pdf.text('>', ML + 43, y + 10.5 + ti * 3.5);
                 pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
                 pdf.text(exp.tasks[ti], ML + 47, y + 10.5 + ti * 3.5);
             }
@@ -1407,11 +1407,11 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         y = sectionTitle('Formation & Certifications', y);
 
         var formations = [
-            { year: '2024', title: "Formation IA \u2013 Automation & No-code", school: "\u00c9cole CUBE" },
+            { year: '2024', title: "Formation IA - Automation & No-code", school: "\u00c9cole CUBE" },
             { year: '2018', title: "MOOC S\u00e9curit\u00e9 authentification & nomadisme", school: 'ANSSI' },
-            { year: '2018', title: "BULATS A2 \u2013 Anglais", school: 'Cambridge' },
+            { year: '2018', title: "BULATS A2 - Anglais", school: 'Cambridge' },
             { year: '2008', title: 'Technicien de maintenance informatique', school: 'CNFDI Paris' },
-            { year: '1994', title: "Pr\u00e9pa Expertise Comptable & Baccalaur\u00e9at Comptabilit\u00e9", school: "Lyc\u00e9e Albert Camus & Sacr\u00e9 C\u0153ur, Nantes" }
+            { year: '1994', title: "Pr\u00e9pa Expertise Comptable & Baccalaur\u00e9at Comptabilit\u00e9", school: "Lyc\u00e9e Albert Camus & Sacr\u00e9 Coeur, Nantes" }
         ];
 
         // Timeline line
@@ -1457,7 +1457,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         pdf.setFont('helvetica', 'normal');
         pdf.setFontSize(6);
         pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
-        pdf.text('\u00a9 2026 \u2013 Cyrille Audureau', PW / 2, y + 4, { align: 'center' });
+        pdf.text('\u00a9 2026 - Cyrille Audureau', PW / 2, y + 4, { align: 'center' });
 
         // --- DOWNLOAD ---
         var pdfBlob = pdf.output('blob');
