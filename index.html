@@ -1220,9 +1220,9 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
             // Separator line between items
             if (vi < vpItems.length - 1) {
                 pdf.setDrawColor(255, 255, 255);
-                pdf.setLineWidth(0.15);
+                pdf.setLineWidth(0.6);
                 var sepX = ML + vpColW * (vi + 1);
-                pdf.line(sepX, vpY + 3, sepX, vpY + vpH - 3);
+                pdf.line(sepX, vpY + 2.5, sepX, vpY + vpH - 2.5);
             }
         }
 
@@ -1255,7 +1255,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
                 pdf.text(wLines[wl], wx + 3, y + 21 + wl * 3.5);
             }
         }
-        y += 40;
+        y += 37;
 
         // --- PARCOURS PROFESSIONNEL ---
         y = sectionTitle('Parcours professionnel', y);
@@ -1322,7 +1322,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
                 pdf.text(exp.tasks[ti], ML + 51, y + 13.5 + ti * 4.2);
             }
 
-            y += cardH + 2.5;
+            y += cardH + 1.5;
         }
 
         // ============================================================
