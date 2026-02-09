@@ -1105,14 +1105,14 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
 
         // Helper: section title with colored bar
         function sectionTitle(title, yy) {
-            rRect(ML, yy, 3.5, 8, 1, C_PRIMARY, null);
+            rRect(ML, yy, 3.5, 9, 1, C_PRIMARY, null);
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(14);
+            pdf.setFontSize(15);
             pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
-            pdf.text(title, ML + 7, yy + 5.8);
+            pdf.text(title, ML + 7, yy + 6.2);
             pdf.setDrawColor(230, 230, 230);
             pdf.setLineWidth(0.3);
-            pdf.line(ML, yy + 10, PW - MR, yy + 10);
+            pdf.line(ML, yy + 10.5, PW - MR, yy + 10.5);
             return yy + 14;
         }
 
@@ -1142,21 +1142,21 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
 
         // Name
         pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(26);
+        pdf.setFontSize(28);
         pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
         pdf.text('Cyrille Audureau', ML + 5, y + 11);
 
         // Title badge
-        rRect(ML + 5, y + 14, 56, 8, 3, C_PRIMARY, null);
+        rRect(ML + 5, y + 14, 60, 9, 3, C_PRIMARY, null);
         pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(10);
+        pdf.setFontSize(11);
         pdf.setTextColor(255, 255, 255);
-        pdf.text('Technicien Support N2', ML + 8, y + 19.5);
+        pdf.text('Technicien Support N2', ML + 8, y + 20);
 
         // Contact info
-        var contactY = y + 28;
+        var contactY = y + 29;
         pdf.setFont('helvetica', 'normal');
-        pdf.setFontSize(8.5);
+        pdf.setFontSize(9);
         pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
 
         var contacts = [
@@ -1168,10 +1168,10 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         var cX = ML + 5;
         for (var ci = 0; ci < contacts.length; ci++) {
             pdf.text(contacts[ci], cX, contactY);
-            cX += pdf.getTextWidth(contacts[ci]) + 6;
+            cX += pdf.getTextWidth(contacts[ci]) + 5;
             if (ci < contacts.length - 1) {
                 pdf.setTextColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
-                pdf.text('|', cX - 4, contactY);
+                pdf.text('|', cX - 3, contactY);
                 pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
             }
         }
@@ -1180,21 +1180,21 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         var statX = PW - MR - 42;
         rRect(statX, y + 3, 37, 19, 3, C_WHITE, [230, 220, 210]);
         pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(18);
+        pdf.setFontSize(20);
         pdf.setTextColor(C_PRIMARY[0], C_PRIMARY[1], C_PRIMARY[2]);
         pdf.text('30+', statX + 18.5, y + 11.5, { align: 'center' });
         pdf.setFont('helvetica', 'normal');
-        pdf.setFontSize(6.5);
+        pdf.setFontSize(7);
         pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
         pdf.text("ANS D'EXP\u00c9RIENCE", statX + 18.5, y + 16, { align: 'center' });
 
         rRect(statX, y + 25, 37, 19, 3, C_WHITE, [230, 220, 210]);
         pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(18);
+        pdf.setFontSize(20);
         pdf.setTextColor(C_PRIMARY[0], C_PRIMARY[1], C_PRIMARY[2]);
         pdf.text('15+', statX + 18.5, y + 33.5, { align: 'center' });
         pdf.setFont('helvetica', 'normal');
-        pdf.setFontSize(6.5);
+        pdf.setFontSize(7);
         pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
         pdf.text('ANS EN IT', statX + 18.5, y + 38, { align: 'center' });
 
@@ -1212,12 +1212,8 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         for (var vi = 0; vi < vpItems.length; vi++) {
             var vpCenterX = ML + vpColW * vi + vpColW / 2;
 
-            // Small decorative dot
-            pdf.setFillColor(255, 255, 255, 0.3);
-            pdf.circle(vpCenterX - pdf.getTextWidth(vpItems[vi]) / 2 - 4, vpY + vpH / 2, 1.2, 'F');
-
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(9);
+            pdf.setFontSize(9.5);
             pdf.setTextColor(255, 255, 255);
             pdf.text(vpItems[vi], vpCenterX, vpY + vpH / 2 + 1.2, { align: 'center' });
 
@@ -1233,9 +1229,9 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         y = vpY + vpH + 4;
 
         // --- POURQUOI ME RECRUTER ---
-        rRect(ML, y, CW, 33, 4, C_PRIMARY, null);
+        rRect(ML, y, CW, 35, 4, C_PRIMARY, null);
         pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(13);
+        pdf.setFontSize(14);
         pdf.setTextColor(255, 255, 255);
         pdf.text('Pourquoi me recruter ?', PW / 2, y + 8, { align: 'center' });
 
@@ -1247,19 +1243,19 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         var whyW = (CW - 16) / 3;
         for (var wi = 0; wi < whyItems.length; wi++) {
             var wx = ML + 4 + wi * (whyW + 4);
-            rRect(wx, y + 11, whyW, 19, 2, [216, 116, 62], null);
+            rRect(wx, y + 11, whyW, 21, 2, [216, 116, 62], null);
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(8.5);
+            pdf.setFontSize(10);
             pdf.setTextColor(255, 255, 255);
-            pdf.text(whyItems[wi].title, wx + 3, y + 16);
+            pdf.text(whyItems[wi].title, wx + 3, y + 16.5);
             pdf.setFont('helvetica', 'normal');
-            pdf.setFontSize(7);
+            pdf.setFontSize(9);
             var wLines = pdf.splitTextToSize(whyItems[wi].desc, whyW - 6);
             for (var wl = 0; wl < wLines.length; wl++) {
-                pdf.text(wLines[wl], wx + 3, y + 20.5 + wl * 3.2);
+                pdf.text(wLines[wl], wx + 3, y + 21 + wl * 3.5);
             }
         }
-        y += 38;
+        y += 40;
 
         // --- PARCOURS PROFESSIONNEL ---
         y = sectionTitle('Parcours professionnel', y);
@@ -1282,7 +1278,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         for (var ei = 0; ei < experiences.length; ei++) {
             var exp = experiences[ei];
             var taskCount = exp.tasks.length;
-            var cardH = 10 + taskCount * 4;
+            var cardH = 11 + taskCount * 4.2;
             checkPage(cardH + 2);
 
             // Left accent line
@@ -1291,42 +1287,42 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
             pdf.line(ML, y, ML, y + cardH);
 
             // Period badge
-            rRect(ML + 2, y, 26, 5.5, 1.5, C_PRIMARY, null);
+            rRect(ML + 2, y, 28, 6, 1.5, C_PRIMARY, null);
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(7.5);
+            pdf.setFontSize(9);
             pdf.setTextColor(255, 255, 255);
-            pdf.text(exp.period, ML + 3.5, y + 4);
+            pdf.text(exp.period, ML + 3.5, y + 4.2);
 
             // Duration
             pdf.setFont('helvetica', 'normal');
-            pdf.setFontSize(7);
+            pdf.setFontSize(9);
             pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
-            pdf.text(exp.duration, ML + 30, y + 4);
+            pdf.text(exp.duration, ML + 32, y + 4.2);
 
             // Job title
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(9.5);
+            pdf.setFontSize(10);
             pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
-            pdf.text(exp.title, ML + 44, y + 4);
+            pdf.text(exp.title, ML + 46, y + 4.2);
 
             // Company
             pdf.setFont('helvetica', 'normal');
-            pdf.setFontSize(8);
+            pdf.setFontSize(9);
             pdf.setTextColor(C_SECONDARY[0], C_SECONDARY[1], C_SECONDARY[2]);
-            pdf.text(exp.company, ML + 44, y + 8.5);
+            pdf.text(exp.company, ML + 46, y + 9);
 
             // Tasks
             pdf.setFont('helvetica', 'normal');
-            pdf.setFontSize(7.5);
+            pdf.setFontSize(9);
             pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
             for (var ti = 0; ti < exp.tasks.length; ti++) {
                 pdf.setTextColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
-                pdf.text('>', ML + 45, y + 12.5 + ti * 4);
+                pdf.text('>', ML + 47, y + 13.5 + ti * 4.2);
                 pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
-                pdf.text(exp.tasks[ti], ML + 49, y + 12.5 + ti * 4);
+                pdf.text(exp.tasks[ti], ML + 51, y + 13.5 + ti * 4.2);
             }
 
-            y += cardH + 3;
+            y += cardH + 2.5;
         }
 
         // ============================================================
@@ -1350,43 +1346,43 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
             var cat = skillCategories[si];
             var col = si % 2;
             var catX = ML + col * (catW + 6);
-            if (si % 2 === 0 && si > 0) { y += 26; }
+            if (si % 2 === 0 && si > 0) { y += 28; }
             var catY = (si < 2) ? y : y;
 
-            rRect(catX, catY, catW, 22, 3, [253, 251, 247], null);
+            rRect(catX, catY, catW, 24, 3, [253, 251, 247], null);
 
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(8.5);
+            pdf.setFontSize(10);
             pdf.setTextColor(C_SECONDARY[0], C_SECONDARY[1], C_SECONDARY[2]);
-            pdf.text(cat.title, catX + 4, catY + 6);
+            pdf.text(cat.title, catX + 4, catY + 6.5);
 
             var pillX = catX + 4;
-            var pillY = catY + 11;
+            var pillY = catY + 12;
             for (var pi = 0; pi < cat.skills.length; pi++) {
                 var skill = cat.skills[pi];
-                pdf.setFontSize(7.2);
+                pdf.setFontSize(9);
                 var tw = pdf.getTextWidth(skill) + 5;
                 if (pillX + tw > catX + catW - 3) {
                     pillX = catX + 4;
-                    pillY += 6.5;
+                    pillY += 7;
                 }
                 var isFeatured = cat.featured.indexOf(pi) !== -1;
                 if (isFeatured) {
-                    rRect(pillX, pillY - 3.2, tw + 1, 5.8, 2, C_PRIMARY, null);
+                    rRect(pillX, pillY - 3.5, tw + 1, 6.5, 2, C_PRIMARY, null);
                     pdf.setFont('helvetica', 'bold');
-                    pdf.setFontSize(7.2);
+                    pdf.setFontSize(9);
                     pdf.setTextColor(255, 255, 255);
                 } else {
-                    rRect(pillX, pillY - 3.2, tw + 1, 5.8, 2, C_WHITE, [220, 215, 210]);
+                    rRect(pillX, pillY - 3.5, tw + 1, 6.5, 2, C_WHITE, [220, 215, 210]);
                     pdf.setFont('helvetica', 'normal');
-                    pdf.setFontSize(7.2);
+                    pdf.setFontSize(9);
                     pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
                 }
                 pdf.text(skill, pillX + 2.5, pillY + 0.8);
                 pillX += tw + 3;
             }
         }
-        y += 52;
+        y += 56;
 
         // --- SAVOIR-ETRE ---
         y = sectionTitle('Savoir-\u00eatre', y);
@@ -1401,20 +1397,20 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
             var ssCol = ssi % 5;
             var ssRow = Math.floor(ssi / 5);
             var ssX = ML + ssCol * (ssColW + 3);
-            var ssY = y + ssRow * 11;
+            var ssY = y + ssRow * 12;
 
-            rRect(ssX, ssY, ssColW, 8.5, 2, [253, 251, 247], null);
+            rRect(ssX, ssY, ssColW, 9.5, 2, [253, 251, 247], null);
 
             // Colored dot
             pdf.setFillColor(C_SECONDARY[0], C_SECONDARY[1], C_SECONDARY[2]);
-            pdf.circle(ssX + 4, ssY + 4.2, 1.5, 'F');
+            pdf.circle(ssX + 4, ssY + 4.8, 1.5, 'F');
 
             pdf.setFont('helvetica', 'normal');
-            pdf.setFontSize(7.2);
+            pdf.setFontSize(9);
             pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
-            pdf.text(softSkills[ssi], ssX + 7.5, ssY + 5.5);
+            pdf.text(softSkills[ssi], ssX + 7.5, ssY + 6);
         }
-        y += 26;
+        y += 28;
 
         // --- FORMATION & CERTIFICATIONS ---
         y = sectionTitle('Formation & Certifications', y);
@@ -1430,36 +1426,36 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         // Timeline line
         pdf.setDrawColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
         pdf.setLineWidth(0.4);
-        pdf.line(ML + 4, y, ML + 4, y + formations.length * 13 - 3);
+        pdf.line(ML + 4, y, ML + 4, y + formations.length * 14 - 3);
 
         for (var fi = 0; fi < formations.length; fi++) {
             var f = formations[fi];
-            var fY = y + fi * 13;
+            var fY = y + fi * 14;
 
             // Timeline dot
             pdf.setFillColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
-            pdf.circle(ML + 4, fY + 2.5, 2, 'F');
+            pdf.circle(ML + 4, fY + 3, 2, 'F');
             pdf.setFillColor(255, 255, 255);
-            pdf.circle(ML + 4, fY + 2.5, 1, 'F');
+            pdf.circle(ML + 4, fY + 3, 1, 'F');
 
             // Year badge
-            rRect(ML + 10, fY - 0.5, 14, 6, 1.5, [247, 243, 237], null);
+            rRect(ML + 10, fY - 0.5, 16, 7, 1.5, [247, 243, 237], null);
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(7.5);
+            pdf.setFontSize(9);
             pdf.setTextColor(C_PRIMARY[0], C_PRIMARY[1], C_PRIMARY[2]);
-            pdf.text(f.year, ML + 12, fY + 3.5);
+            pdf.text(f.year, ML + 12, fY + 4);
 
             // Title
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(8.5);
+            pdf.setFontSize(10);
             pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
-            pdf.text(f.title, ML + 28, fY + 3.5);
+            pdf.text(f.title, ML + 30, fY + 4);
 
             // School
             pdf.setFont('helvetica', 'normal');
-            pdf.setFontSize(7.5);
+            pdf.setFontSize(9);
             pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
-            pdf.text(f.school, ML + 28, fY + 8);
+            pdf.text(f.school, ML + 30, fY + 9);
         }
 
         // --- FOOTER LINE ---
@@ -1468,7 +1464,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         pdf.setLineWidth(0.2);
         pdf.line(ML, y, PW - MR, y);
         pdf.setFont('helvetica', 'normal');
-        pdf.setFontSize(7);
+        pdf.setFontSize(8);
         pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
         pdf.text('\u00a9 2026 - Cyrille Audureau', PW / 2, y + 4, { align: 'center' });
 
