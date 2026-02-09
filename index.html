@@ -1198,27 +1198,39 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
         pdf.text('ANS EN IT', statX + 17.5, y + 34.5, { align: 'center' });
 
-        // Value proposition bar
-        var vpY = y + 31;
+        // Value proposition bar - full width green banner
+        var vpY = y + 49;
         var vpItems = [
             'Form\u00e9 IA & Automatisation en 2024',
             'Expert formation & tutorat collaborateurs',
             'Parcours \u00e9volutif : terrain -> IT'
         ];
-        rRect(ML + 5, vpY, CW - 50, 8, 3, C_SECONDARY, null);
-        pdf.setFont('helvetica', 'normal');
-        pdf.setFontSize(6.8);
-        pdf.setTextColor(255, 255, 255);
-        var vpX = ML + 8;
+        var vpH = 12;
+        rRect(ML, vpY, CW, vpH, 4, C_SECONDARY, null);
+
+        var vpColW = CW / 3;
         for (var vi = 0; vi < vpItems.length; vi++) {
-            pdf.text(vpItems[vi], vpX, vpY + 5);
-            vpX += pdf.getTextWidth(vpItems[vi]) + 6;
+            var vpCenterX = ML + vpColW * vi + vpColW / 2;
+
+            // Small decorative dot
+            pdf.setFillColor(255, 255, 255, 0.3);
+            pdf.circle(vpCenterX - pdf.getTextWidth(vpItems[vi]) / 2 - 4, vpY + vpH / 2, 1.2, 'F');
+
+            pdf.setFont('helvetica', 'bold');
+            pdf.setFontSize(8);
+            pdf.setTextColor(255, 255, 255);
+            pdf.text(vpItems[vi], vpCenterX, vpY + vpH / 2 + 1, { align: 'center' });
+
+            // Separator line between items
             if (vi < vpItems.length - 1) {
-                pdf.text('\u00b7', vpX - 4, vpY + 5);
+                pdf.setDrawColor(255, 255, 255);
+                pdf.setLineWidth(0.15);
+                var sepX = ML + vpColW * (vi + 1);
+                pdf.line(sepX, vpY + 3, sepX, vpY + vpH - 3);
             }
         }
 
-        y += 52;
+        y = vpY + vpH + 4;
 
         // --- POURQUOI ME RECRUTER ---
         rRect(ML, y, CW, 28, 4, C_PRIMARY, null);
