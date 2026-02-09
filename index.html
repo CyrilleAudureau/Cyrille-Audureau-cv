@@ -1078,7 +1078,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         var C_BG = [247, 243, 237];
 
         var PW = 210, PH = 297;
-        var ML = 12, MR = 12, MT = 12;
+        var ML = 10, MR = 10, MT = 10;
         var CW = PW - ML - MR;
         var y = MT;
 
@@ -1105,15 +1105,15 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
 
         // Helper: section title with colored bar
         function sectionTitle(title, yy) {
-            rRect(ML, yy, 3, 7, 1, C_PRIMARY, null);
+            rRect(ML, yy, 3.5, 8, 1, C_PRIMARY, null);
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(13);
+            pdf.setFontSize(14);
             pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
-            pdf.text(title, ML + 6, yy + 5.2);
+            pdf.text(title, ML + 7, yy + 5.8);
             pdf.setDrawColor(230, 230, 230);
             pdf.setLineWidth(0.3);
-            pdf.line(ML, yy + 9, PW - MR, yy + 9);
-            return yy + 13;
+            pdf.line(ML, yy + 10, PW - MR, yy + 10);
+            return yy + 14;
         }
 
         // Helper: check page overflow
@@ -1129,34 +1129,34 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         // ============================================================
 
         // --- HEADER BACKGROUND ---
-        rRect(ML, y, CW, 46, 4, [253, 251, 247], [230, 220, 210]);
+        rRect(ML, y, CW, 50, 4, [253, 251, 247], [230, 220, 210]);
 
         // Gradient accent line at bottom of header
         pdf.setLineWidth(1.2);
         pdf.setDrawColor(C_PRIMARY[0], C_PRIMARY[1], C_PRIMARY[2]);
-        pdf.line(ML, y + 46, ML + CW / 3, y + 46);
+        pdf.line(ML, y + 50, ML + CW / 3, y + 50);
         pdf.setDrawColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
-        pdf.line(ML + CW / 3, y + 46, ML + 2 * CW / 3, y + 46);
+        pdf.line(ML + CW / 3, y + 50, ML + 2 * CW / 3, y + 50);
         pdf.setDrawColor(C_SECONDARY[0], C_SECONDARY[1], C_SECONDARY[2]);
-        pdf.line(ML + 2 * CW / 3, y + 46, PW - MR, y + 46);
+        pdf.line(ML + 2 * CW / 3, y + 50, PW - MR, y + 50);
 
         // Name
         pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(24);
+        pdf.setFontSize(26);
         pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
-        pdf.text('Cyrille Audureau', ML + 5, y + 10);
+        pdf.text('Cyrille Audureau', ML + 5, y + 11);
 
         // Title badge
-        rRect(ML + 5, y + 13, 52, 7, 3, C_PRIMARY, null);
+        rRect(ML + 5, y + 14, 56, 8, 3, C_PRIMARY, null);
         pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(9);
+        pdf.setFontSize(10);
         pdf.setTextColor(255, 255, 255);
-        pdf.text('Technicien Support N2', ML + 8, y + 17.8);
+        pdf.text('Technicien Support N2', ML + 8, y + 19.5);
 
         // Contact info
-        var contactY = y + 25;
+        var contactY = y + 28;
         pdf.setFont('helvetica', 'normal');
-        pdf.setFontSize(7.5);
+        pdf.setFontSize(8.5);
         pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
 
         var contacts = [
@@ -1177,35 +1177,35 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         }
 
         // Impact stats
-        var statX = PW - MR - 40;
-        rRect(statX, y + 3, 35, 17, 3, C_WHITE, [230, 220, 210]);
+        var statX = PW - MR - 42;
+        rRect(statX, y + 3, 37, 19, 3, C_WHITE, [230, 220, 210]);
         pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(16);
+        pdf.setFontSize(18);
         pdf.setTextColor(C_PRIMARY[0], C_PRIMARY[1], C_PRIMARY[2]);
-        pdf.text('30+', statX + 17.5, y + 10.5, { align: 'center' });
+        pdf.text('30+', statX + 18.5, y + 11.5, { align: 'center' });
         pdf.setFont('helvetica', 'normal');
-        pdf.setFontSize(5.5);
+        pdf.setFontSize(6.5);
         pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
-        pdf.text("ANS D'EXP\u00c9RIENCE", statX + 17.5, y + 14.5, { align: 'center' });
+        pdf.text("ANS D'EXP\u00c9RIENCE", statX + 18.5, y + 16, { align: 'center' });
 
-        rRect(statX, y + 23, 35, 17, 3, C_WHITE, [230, 220, 210]);
+        rRect(statX, y + 25, 37, 19, 3, C_WHITE, [230, 220, 210]);
         pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(16);
+        pdf.setFontSize(18);
         pdf.setTextColor(C_PRIMARY[0], C_PRIMARY[1], C_PRIMARY[2]);
-        pdf.text('15+', statX + 17.5, y + 30.5, { align: 'center' });
+        pdf.text('15+', statX + 18.5, y + 33.5, { align: 'center' });
         pdf.setFont('helvetica', 'normal');
-        pdf.setFontSize(5.5);
+        pdf.setFontSize(6.5);
         pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
-        pdf.text('ANS EN IT', statX + 17.5, y + 34.5, { align: 'center' });
+        pdf.text('ANS EN IT', statX + 18.5, y + 38, { align: 'center' });
 
         // Value proposition bar - full width green banner
-        var vpY = y + 49;
+        var vpY = y + 53;
         var vpItems = [
             'Form\u00e9 IA & Automatisation en 2024',
             'Expert formation & tutorat collaborateurs',
             'Parcours \u00e9volutif : terrain -> IT'
         ];
-        var vpH = 12;
+        var vpH = 13;
         rRect(ML, vpY, CW, vpH, 4, C_SECONDARY, null);
 
         var vpColW = CW / 3;
@@ -1217,9 +1217,9 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
             pdf.circle(vpCenterX - pdf.getTextWidth(vpItems[vi]) / 2 - 4, vpY + vpH / 2, 1.2, 'F');
 
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(8);
+            pdf.setFontSize(9);
             pdf.setTextColor(255, 255, 255);
-            pdf.text(vpItems[vi], vpCenterX, vpY + vpH / 2 + 1, { align: 'center' });
+            pdf.text(vpItems[vi], vpCenterX, vpY + vpH / 2 + 1.2, { align: 'center' });
 
             // Separator line between items
             if (vi < vpItems.length - 1) {
@@ -1233,11 +1233,11 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         y = vpY + vpH + 4;
 
         // --- POURQUOI ME RECRUTER ---
-        rRect(ML, y, CW, 28, 4, C_PRIMARY, null);
+        rRect(ML, y, CW, 33, 4, C_PRIMARY, null);
         pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(12);
+        pdf.setFontSize(13);
         pdf.setTextColor(255, 255, 255);
-        pdf.text('Pourquoi me recruter ?', PW / 2, y + 7, { align: 'center' });
+        pdf.text('Pourquoi me recruter ?', PW / 2, y + 8, { align: 'center' });
 
         var whyItems = [
             { title: 'Double comp\u00e9tence', desc: 'Expertise technique IT + sens business acquis sur le terrain (management, commerce, production)' },
@@ -1247,19 +1247,19 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         var whyW = (CW - 16) / 3;
         for (var wi = 0; wi < whyItems.length; wi++) {
             var wx = ML + 4 + wi * (whyW + 4);
-            rRect(wx, y + 10, whyW, 15, 2, [216, 116, 62], null);
+            rRect(wx, y + 11, whyW, 19, 2, [216, 116, 62], null);
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(7.5);
+            pdf.setFontSize(8.5);
             pdf.setTextColor(255, 255, 255);
-            pdf.text(whyItems[wi].title, wx + 3, y + 14.5);
+            pdf.text(whyItems[wi].title, wx + 3, y + 16);
             pdf.setFont('helvetica', 'normal');
-            pdf.setFontSize(6);
+            pdf.setFontSize(7);
             var wLines = pdf.splitTextToSize(whyItems[wi].desc, whyW - 6);
             for (var wl = 0; wl < wLines.length; wl++) {
-                pdf.text(wLines[wl], wx + 3, y + 18 + wl * 2.8);
+                pdf.text(wLines[wl], wx + 3, y + 20.5 + wl * 3.2);
             }
         }
-        y += 32;
+        y += 38;
 
         // --- PARCOURS PROFESSIONNEL ---
         y = sectionTitle('Parcours professionnel', y);
@@ -1282,7 +1282,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         for (var ei = 0; ei < experiences.length; ei++) {
             var exp = experiences[ei];
             var taskCount = exp.tasks.length;
-            var cardH = 8 + taskCount * 3.5;
+            var cardH = 10 + taskCount * 4;
             checkPage(cardH + 2);
 
             // Left accent line
@@ -1291,39 +1291,39 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
             pdf.line(ML, y, ML, y + cardH);
 
             // Period badge
-            rRect(ML + 2, y, 24, 5, 1.5, C_PRIMARY, null);
+            rRect(ML + 2, y, 26, 5.5, 1.5, C_PRIMARY, null);
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(6.5);
+            pdf.setFontSize(7.5);
             pdf.setTextColor(255, 255, 255);
-            pdf.text(exp.period, ML + 3.5, y + 3.5);
+            pdf.text(exp.period, ML + 3.5, y + 4);
 
             // Duration
             pdf.setFont('helvetica', 'normal');
-            pdf.setFontSize(6);
+            pdf.setFontSize(7);
             pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
-            pdf.text(exp.duration, ML + 28, y + 3.5);
+            pdf.text(exp.duration, ML + 30, y + 4);
 
             // Job title
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(8.5);
+            pdf.setFontSize(9.5);
             pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
-            pdf.text(exp.title, ML + 42, y + 3.5);
+            pdf.text(exp.title, ML + 44, y + 4);
 
             // Company
             pdf.setFont('helvetica', 'normal');
-            pdf.setFontSize(7);
+            pdf.setFontSize(8);
             pdf.setTextColor(C_SECONDARY[0], C_SECONDARY[1], C_SECONDARY[2]);
-            pdf.text(exp.company, ML + 42, y + 7);
+            pdf.text(exp.company, ML + 44, y + 8.5);
 
             // Tasks
             pdf.setFont('helvetica', 'normal');
-            pdf.setFontSize(6.5);
+            pdf.setFontSize(7.5);
             pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
             for (var ti = 0; ti < exp.tasks.length; ti++) {
                 pdf.setTextColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
-                pdf.text('>', ML + 43, y + 10.5 + ti * 3.5);
+                pdf.text('>', ML + 45, y + 12.5 + ti * 4);
                 pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
-                pdf.text(exp.tasks[ti], ML + 47, y + 10.5 + ti * 3.5);
+                pdf.text(exp.tasks[ti], ML + 49, y + 12.5 + ti * 4);
             }
 
             y += cardH + 3;
@@ -1350,42 +1350,43 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
             var cat = skillCategories[si];
             var col = si % 2;
             var catX = ML + col * (catW + 6);
-            if (si % 2 === 0 && si > 0) { y += 22; }
+            if (si % 2 === 0 && si > 0) { y += 26; }
             var catY = (si < 2) ? y : y;
 
-            rRect(catX, catY, catW, 19, 3, [253, 251, 247], null);
+            rRect(catX, catY, catW, 22, 3, [253, 251, 247], null);
 
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(7.5);
+            pdf.setFontSize(8.5);
             pdf.setTextColor(C_SECONDARY[0], C_SECONDARY[1], C_SECONDARY[2]);
-            pdf.text(cat.title, catX + 4, catY + 5.5);
+            pdf.text(cat.title, catX + 4, catY + 6);
 
             var pillX = catX + 4;
-            var pillY = catY + 9;
+            var pillY = catY + 11;
             for (var pi = 0; pi < cat.skills.length; pi++) {
                 var skill = cat.skills[pi];
+                pdf.setFontSize(7.2);
                 var tw = pdf.getTextWidth(skill) + 5;
                 if (pillX + tw > catX + catW - 3) {
                     pillX = catX + 4;
-                    pillY += 5.5;
+                    pillY += 6.5;
                 }
                 var isFeatured = cat.featured.indexOf(pi) !== -1;
                 if (isFeatured) {
-                    rRect(pillX, pillY - 3, tw + 1, 5, 2, C_PRIMARY, null);
+                    rRect(pillX, pillY - 3.2, tw + 1, 5.8, 2, C_PRIMARY, null);
                     pdf.setFont('helvetica', 'bold');
-                    pdf.setFontSize(6.2);
+                    pdf.setFontSize(7.2);
                     pdf.setTextColor(255, 255, 255);
                 } else {
-                    rRect(pillX, pillY - 3, tw + 1, 5, 2, C_WHITE, [220, 215, 210]);
+                    rRect(pillX, pillY - 3.2, tw + 1, 5.8, 2, C_WHITE, [220, 215, 210]);
                     pdf.setFont('helvetica', 'normal');
-                    pdf.setFontSize(6.2);
+                    pdf.setFontSize(7.2);
                     pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
                 }
-                pdf.text(skill, pillX + 2.5, pillY + 0.5);
+                pdf.text(skill, pillX + 2.5, pillY + 0.8);
                 pillX += tw + 3;
             }
         }
-        y += 46;
+        y += 52;
 
         // --- SAVOIR-ETRE ---
         y = sectionTitle('Savoir-\u00eatre', y);
@@ -1400,20 +1401,20 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
             var ssCol = ssi % 5;
             var ssRow = Math.floor(ssi / 5);
             var ssX = ML + ssCol * (ssColW + 3);
-            var ssY = y + ssRow * 9;
+            var ssY = y + ssRow * 11;
 
-            rRect(ssX, ssY, ssColW, 7, 2, [253, 251, 247], null);
+            rRect(ssX, ssY, ssColW, 8.5, 2, [253, 251, 247], null);
 
             // Colored dot
             pdf.setFillColor(C_SECONDARY[0], C_SECONDARY[1], C_SECONDARY[2]);
-            pdf.circle(ssX + 4, ssY + 3.5, 1.5, 'F');
+            pdf.circle(ssX + 4, ssY + 4.2, 1.5, 'F');
 
             pdf.setFont('helvetica', 'normal');
-            pdf.setFontSize(6.2);
+            pdf.setFontSize(7.2);
             pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
-            pdf.text(softSkills[ssi], ssX + 7.5, ssY + 4.5);
+            pdf.text(softSkills[ssi], ssX + 7.5, ssY + 5.5);
         }
-        y += 22;
+        y += 26;
 
         // --- FORMATION & CERTIFICATIONS ---
         y = sectionTitle('Formation & Certifications', y);
@@ -1429,36 +1430,36 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         // Timeline line
         pdf.setDrawColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
         pdf.setLineWidth(0.4);
-        pdf.line(ML + 4, y, ML + 4, y + formations.length * 11 - 3);
+        pdf.line(ML + 4, y, ML + 4, y + formations.length * 13 - 3);
 
         for (var fi = 0; fi < formations.length; fi++) {
             var f = formations[fi];
-            var fY = y + fi * 11;
+            var fY = y + fi * 13;
 
             // Timeline dot
             pdf.setFillColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
-            pdf.circle(ML + 4, fY + 2, 2, 'F');
+            pdf.circle(ML + 4, fY + 2.5, 2, 'F');
             pdf.setFillColor(255, 255, 255);
-            pdf.circle(ML + 4, fY + 2, 1, 'F');
+            pdf.circle(ML + 4, fY + 2.5, 1, 'F');
 
             // Year badge
-            rRect(ML + 10, fY - 0.5, 13, 5, 1.5, [247, 243, 237], null);
+            rRect(ML + 10, fY - 0.5, 14, 6, 1.5, [247, 243, 237], null);
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(6.5);
+            pdf.setFontSize(7.5);
             pdf.setTextColor(C_PRIMARY[0], C_PRIMARY[1], C_PRIMARY[2]);
-            pdf.text(f.year, ML + 12, fY + 3);
+            pdf.text(f.year, ML + 12, fY + 3.5);
 
             // Title
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(7.5);
+            pdf.setFontSize(8.5);
             pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
-            pdf.text(f.title, ML + 26, fY + 3);
+            pdf.text(f.title, ML + 28, fY + 3.5);
 
             // School
             pdf.setFont('helvetica', 'normal');
-            pdf.setFontSize(6.5);
+            pdf.setFontSize(7.5);
             pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
-            pdf.text(f.school, ML + 26, fY + 7);
+            pdf.text(f.school, ML + 28, fY + 8);
         }
 
         // --- FOOTER LINE ---
@@ -1467,7 +1468,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         pdf.setLineWidth(0.2);
         pdf.line(ML, y, PW - MR, y);
         pdf.setFont('helvetica', 'normal');
-        pdf.setFontSize(6);
+        pdf.setFontSize(7);
         pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
         pdf.text('\u00a9 2026 - Cyrille Audureau', PW / 2, y + 4, { align: 'center' });
 
