@@ -1198,35 +1198,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
         pdf.text('ANS EN IT', statX + 18.5, y + 38, { align: 'center' });
 
-        // Value proposition bar - full width green banner
-        var vpY = y + 53;
-        var vpItems = [
-            'Form\u00e9 IA & Automatisation en 2024',
-            'Expert formation & tutorat collaborateurs',
-            'Parcours \u00e9volutif : terrain -> IT'
-        ];
-        var vpH = 13;
-        rRect(ML, vpY, CW, vpH, 4, C_SECONDARY, null);
-
-        var vpColW = CW / 3;
-        for (var vi = 0; vi < vpItems.length; vi++) {
-            var vpCenterX = ML + vpColW * vi + vpColW / 2;
-
-            pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(9.5);
-            pdf.setTextColor(255, 255, 255);
-            pdf.text(vpItems[vi], vpCenterX, vpY + vpH / 2 + 1.2, { align: 'center' });
-
-            // Separator line between items
-            if (vi < vpItems.length - 1) {
-                pdf.setDrawColor(255, 255, 255);
-                pdf.setLineWidth(0.6);
-                var sepX = ML + vpColW * (vi + 1);
-                pdf.line(sepX, vpY + 2.5, sepX, vpY + vpH - 2.5);
-            }
-        }
-
-        y = vpY + vpH + 4;
+        y += 54;
 
         // --- POURQUOI ME RECRUTER ---
         rRect(ML, y, CW, 35, 4, C_PRIMARY, null);
