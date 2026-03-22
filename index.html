@@ -371,8 +371,8 @@ body::before {
 /* Skills Section */
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
 }
 
 .skill-category {
@@ -908,33 +908,110 @@ footer {
         <div class="skills-container">
             <div class="skill-category">
                 <div class="skill-category-title">
-                    <i class="fas fa-desktop"></i> Systèmes & Bureautique
+                    <i class="fas fa-desktop"></i> Systèmes
                 </div>
                 <div class="skills-list">
-                    <span class="skill-pill featured">Windows / Office 365 / Citrix</span>
+                    <span class="skill-pill featured">Windows 10/11</span>
+                    <span class="skill-pill featured">Windows Server</span>
+                    <span class="skill-pill">macOS</span>
+                    <span class="skill-pill">Linux (Ubuntu/Debian)</span>
+                    <span class="skill-pill featured">Citrix</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-envelope"></i> Bureautique & Collaboration
+                </div>
+                <div class="skills-list">
+                    <span class="skill-pill featured">Microsoft Office 365</span>
+                    <span class="skill-pill featured">SharePoint</span>
+                    <span class="skill-pill featured">Teams</span>
+                    <span class="skill-pill featured">Outlook</span>
+                    <span class="skill-pill">LibreOffice</span>
+                    <span class="skill-pill">Google Workspace</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-network-wired"></i> Réseaux
+                </div>
+                <div class="skills-list">
+                    <span class="skill-pill">TCP/IP, DHCP, DNS</span>
+                    <span class="skill-pill">Wireshark</span>
+                    <span class="skill-pill">Cisco switch / WIFI</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-phone-alt"></i> Télécom & Mobilité
+                </div>
+                <div class="skills-list">
+                    <span class="skill-pill featured">Téléphonie IPBX / PABX</span>
+                    <span class="skill-pill featured">Android / iOS</span>
+                    <span class="skill-pill featured">MDM / Intune</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-headset"></i> Support & Maintenance
+                </div>
+                <div class="skills-list">
                     <span class="skill-pill featured">GLPI</span>
-                    <span class="skill-pill">Active Directory</span>
+                    <span class="skill-pill featured">ServiceNow</span>
+                    <span class="skill-pill">TeamViewer</span>
+                    <span class="skill-pill">AnyDesk</span>
+                    <span class="skill-pill">CCleaner</span>
+                    <span class="skill-pill">Malwarebytes</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-server"></i> Déploiement & Administration
+                </div>
+                <div class="skills-list">
+                    <span class="skill-pill featured">Active Directory</span>
                     <span class="skill-pill">MDT / FOG</span>
+                    <span class="skill-pill">Clonezilla</span>
+                    <span class="skill-pill">Diagnostic RAM/HDD</span>
+                    <span class="skill-pill">Imprimantes / Scanners</span>
                 </div>
             </div>
 
             <div class="skill-category">
                 <div class="skill-category-title">
-                    <i class="fas fa-network-wired"></i> Réseaux & Télécom
+                    <i class="fas fa-cubes"></i> Virtualisation
                 </div>
                 <div class="skills-list">
-                    <span class="skill-pill">Cisco configuration switch, WIFI</span>
-                    <span class="skill-pill">Téléphonie IPBX et PABX</span>
+                    <span class="skill-pill">VMware</span>
+                    <span class="skill-pill">VirtualBox</span>
+                    <span class="skill-pill">Hyper-V</span>
                 </div>
             </div>
 
             <div class="skill-category">
                 <div class="skill-category-title">
-                    <i class="fas fa-mobile-alt"></i> Mobile & Virtualisation
+                    <i class="fas fa-shield-alt"></i> Sécurité & Cloud
                 </div>
                 <div class="skills-list">
-                    <span class="skill-pill">Android / iOS et MDM</span>
-                    <span class="skill-pill">VMware et VirtualBox</span>
+                    <span class="skill-pill">BitLocker / VeraCrypt</span>
+                    <span class="skill-pill">Sensibilisation RGPD</span>
+                    <span class="skill-pill">Google Drive</span>
+                    <span class="skill-pill">OneDrive</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-terminal"></i> Scripting
+                </div>
+                <div class="skills-list">
+                    <span class="skill-pill">PowerShell</span>
+                    <span class="skill-pill">Bash</span>
                 </div>
             </div>
 
@@ -1343,54 +1420,67 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         y = sectionTitle('Comp\u00e9tences techniques', y);
 
         var skillCategories = [
-            { title: "Syst\u00e8mes & Bureautique", skills: ['Windows / Office 365 / Citrix', 'GLPI', 'Active Directory', 'MDT / FOG'], featured: [0, 1] },
-            { title: "R\u00e9seaux & T\u00e9l\u00e9com", skills: ['Cisco switch, WIFI', 'T\u00e9l\u00e9phonie IPBX et PABX'], featured: [] },
-            { title: 'Mobile & Virtualisation', skills: ['Android / iOS et MDM', 'VMware et VirtualBox'], featured: [] },
+            { title: "Syst\u00e8mes", skills: ['Windows 10/11', 'Windows Server', 'macOS', 'Linux (Ubuntu/Debian)', 'Citrix'], featured: [0, 1, 4] },
+            { title: "Bureautique & Collaboration", skills: ['Office 365', 'SharePoint', 'Teams', 'Outlook', 'LibreOffice', 'Google Workspace'], featured: [0, 1, 2, 3] },
+            { title: "R\u00e9seaux", skills: ['TCP/IP, DHCP, DNS', 'Wireshark', 'Cisco switch / WIFI'], featured: [] },
+            { title: "T\u00e9l\u00e9com & Mobilit\u00e9", skills: ['T\u00e9l\u00e9phonie IPBX / PABX', 'Android / iOS', 'MDM / Intune'], featured: [0, 1, 2] },
+            { title: 'Support & Maintenance', skills: ['GLPI', 'ServiceNow', 'TeamViewer', 'AnyDesk', 'CCleaner', 'Malwarebytes'], featured: [0, 1] },
+            { title: "D\u00e9ploiement & Administration", skills: ['Active Directory', 'MDT / FOG', 'Clonezilla', 'Diagnostic RAM/HDD', 'Imprimantes/Scanners'], featured: [0] },
+            { title: 'Virtualisation', skills: ['VMware', 'VirtualBox', 'Hyper-V'], featured: [] },
+            { title: "S\u00e9curit\u00e9 & Cloud", skills: ['BitLocker / VeraCrypt', 'RGPD', 'Google Drive', 'OneDrive'], featured: [] },
+            { title: 'Scripting', skills: ['PowerShell', 'Bash'], featured: [] },
             { title: 'Innovation & Avenir', skills: ['IA & Automatisation', 'No-code'], featured: [0, 1] }
         ];
 
-        var catW = (CW - 6) / 2;
+        var catW = (CW - 6) / 3;
+        var catRowStartY = y;
         for (var si = 0; si < skillCategories.length; si++) {
             var cat = skillCategories[si];
-            var col = si % 2;
-            var catX = ML + col * (catW + 6);
-            if (si % 2 === 0 && si > 0) { y += 28; }
-            var catY = (si < 2) ? y : y;
+            var col = si % 3;
+            var rowIdx = Math.floor(si / 3);
+            var catX = ML + col * (catW + 3);
+
+            if (col === 0 && si > 0) {
+                catRowStartY += 28;
+            }
+            var catY = catRowStartY;
+
+            checkPage(28);
 
             rRect(catX, catY, catW, 24, 3, [253, 251, 247], null);
 
             pdf.setFont('helvetica', 'bold');
-            pdf.setFontSize(10);
+            pdf.setFontSize(8.5);
             pdf.setTextColor(C_SECONDARY[0], C_SECONDARY[1], C_SECONDARY[2]);
-            pdf.text(cat.title, catX + 4, catY + 6.5);
+            pdf.text(cat.title, catX + 3, catY + 5.5);
 
-            var pillX = catX + 4;
-            var pillY = catY + 12;
+            var pillX = catX + 3;
+            var pillY = catY + 10;
             for (var pi = 0; pi < cat.skills.length; pi++) {
                 var skill = cat.skills[pi];
-                pdf.setFontSize(9);
-                var tw = pdf.getTextWidth(skill) + 5;
-                if (pillX + tw > catX + catW - 3) {
-                    pillX = catX + 4;
-                    pillY += 7;
+                pdf.setFontSize(7.5);
+                var tw = pdf.getTextWidth(skill) + 4;
+                if (pillX + tw > catX + catW - 2) {
+                    pillX = catX + 3;
+                    pillY += 6.5;
                 }
                 var isFeatured = cat.featured.indexOf(pi) !== -1;
                 if (isFeatured) {
-                    rRect(pillX, pillY - 3.5, tw + 1, 6.5, 2, C_PRIMARY, null);
+                    rRect(pillX, pillY - 3, tw + 1, 5.5, 1.5, C_PRIMARY, null);
                     pdf.setFont('helvetica', 'bold');
-                    pdf.setFontSize(9);
+                    pdf.setFontSize(7.5);
                     pdf.setTextColor(255, 255, 255);
                 } else {
-                    rRect(pillX, pillY - 3.5, tw + 1, 6.5, 2, C_WHITE, [220, 215, 210]);
+                    rRect(pillX, pillY - 3, tw + 1, 5.5, 1.5, C_WHITE, [220, 215, 210]);
                     pdf.setFont('helvetica', 'normal');
-                    pdf.setFontSize(9);
+                    pdf.setFontSize(7.5);
                     pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
                 }
-                pdf.text(skill, pillX + 2.5, pillY + 0.8);
-                pillX += tw + 3;
+                pdf.text(skill, pillX + 2, pillY + 0.5);
+                pillX += tw + 2.5;
             }
         }
-        y += 56;
+        y = catRowStartY + 28 + 4;
 
         // --- SAVOIR-ETRE ---
         y = sectionTitle('Savoir-\u00eatre', y);
@@ -1522,6 +1612,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
 
 </body>
 </html>
+
 
 
 
