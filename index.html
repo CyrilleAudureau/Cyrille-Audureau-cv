@@ -1467,7 +1467,11 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
             pdf.text(f.school, ML + 30, fY + 9);
         }
 
+        // Update y to move past all formation items
+        y += formations.length * 14 + 2;
+
         // --- CENTRES D'INTERET ---
+        checkPage(28);
         y = sectionTitle("Centres d'int\u00e9r\u00eat", y);
 
         var interests = ['Cyclisme sur route en club', 'Running en loisir'];
@@ -1518,5 +1522,6 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
 
 </body>
 </html>
+
 
 
