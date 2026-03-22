@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>CV – Cyrille Audureau – Technicien Support N2</title>
+<title>CV – Cyrille Audureau – Technicien informatique de maintenance de proximité</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -572,6 +572,49 @@ body::before {
     line-height: 1.5;
 }
 
+/* Interests */
+.interests-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.interest-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--bg-cream);
+    border-radius: 12px;
+    transition: all 0.3s;
+    flex: 1;
+    min-width: 200px;
+}
+
+.interest-item:hover {
+    background: white;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    transform: translateY(-3px);
+}
+
+.interest-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-primary));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.interest-label {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
 /* Footer */
 footer {
     text-align: center;
@@ -701,8 +744,8 @@ footer {
             <div class="identity">
                 <h1 class="name">Cyrille Audureau</h1>
                 <div class="title-badge">
-                    <i class="fas fa-headset"></i>
-                    Technicien Support N2
+                    <i class="fas fa-desktop"></i>
+                    Technicien informatique de maintenance de proximité
                 </div>
 
                 <div class="contact-row">
@@ -716,11 +759,15 @@ footer {
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>44700 Orvault</span>
+                        <span>2 Rue de la Diligence, 44700 Orvault</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-car"></i>
                         <span>Permis B</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/cyrille-audureau-259382109" target="_blank">LinkedIn</a>
                     </div>
                 </div>
             </div>
@@ -731,7 +778,7 @@ footer {
                     <div class="impact-label">Ans d'expérience</div>
                 </div>
                 <div class="impact-stat">
-                    <div class="impact-number">15+</div>
+                    <div class="impact-number">17+</div>
                     <div class="impact-label">Ans en IT</div>
                 </div>
             </div>
@@ -759,8 +806,8 @@ footer {
         <div class="why-me-grid">
             <div class="why-item">
                 <i class="fas fa-brain"></i>
-                <h4>Double compétence</h4>
-                <p>Expertise technique IT + sens business acquis sur le terrain (management, commerce, production)</p>
+                <h4>Polyvalence terrain</h4>
+                <p>Expérience complète : support N2, déploiement, administration système, réseau et téléphonie</p>
             </div>
             <div class="why-item">
                 <i class="fas fa-graduation-cap"></i>
@@ -784,17 +831,35 @@ footer {
         <div class="experience-grid">
             <div class="exp-card">
                 <div class="exp-date">
-                    <span class="exp-period">2021 – 2026</span>
-                    <span class="exp-duration">5 ans</span>
+                    <span class="exp-period">2026</span>
+                    <span class="exp-duration">Mars 2026</span>
                 </div>
                 <div class="exp-content">
-                    <h3>Technicien Support N2</h3>
+                    <h3>Technicien de proximité (1500 utilisateurs, 10 tickets/jour)</h3>
+                    <div class="exp-company">Lycée Nicolas Appert – Orvault</div>
+                    <ul class="exp-tasks">
+                        <li>Technicien de proximité en intérim et seul sur le service</li>
+                        <li>Déploiement et administration : Masterisation et déploiement de postes via Fog, maintenance et dépannage sous Windows</li>
+                        <li>Gestion des infrastructures : Administration Active Directory, Vcenter, switchs Cisco et wifi</li>
+                        <li>Support technique spécialisé : Maintenance du matériel dédié à la formation industrielle (robotique, automates)</li>
+                        <li>Gestion de parc informatique via GLPI : Suivi du parc (PC, imprimantes, vidéoprojecteurs) et téléphonie (PABX)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-date">
+                    <span class="exp-period">2021 – 2025</span>
+                    <span class="exp-duration">4 ans</span>
+                </div>
+                <div class="exp-content">
+                    <h3>Technicien Support N2 (6000 clients, 20 tickets/jour)</h3>
                     <div class="exp-company">Liciel Environnement – Saint‑Herblain</div>
                     <ul class="exp-tasks">
+                        <li>Dans une équipe de 4 techniciens</li>
                         <li>Support et formation logiciels pour professionnels de l'immobilier</li>
-                        <li>Tutorat des nouveaux collaborateurs</li>
-                        <li>Personnalisation et amélioration des solutions clients</li>
-                        <li>Suivi des objectifs de qualité et de performance</li>
+                        <li>Tuteur pour les nouveaux collaborateurs</li>
+                        <li>Amélioration et personnalisation des logiciels pour les clients. Suivi des objectifs</li>
                     </ul>
                 </div>
             </div>
@@ -805,75 +870,29 @@ footer {
                     <span class="exp-duration">2 ans</span>
                 </div>
                 <div class="exp-content">
-                    <h3>Technicien Support N2</h3>
+                    <h3>Technicien Support N2 (11000 clients, 30 tickets/jour)</h3>
                     <div class="exp-company">Logicmax Technologie – Nantes</div>
                     <ul class="exp-tasks">
-                        <li>Support et formation logiciels pour professionnels de santé</li>
-                        <li>Accompagnement utilisateurs et résolution d'incidents</li>
-                        <li>Tutorat des nouveaux collaborateurs</li>
+                        <li>Dans une équipe de 20 techniciens</li>
+                        <li>Support et formation des logiciels pour les professionnels de santé</li>
+                        <li>Tuteur pour les nouveaux collaborateurs</li>
                     </ul>
                 </div>
             </div>
 
             <div class="exp-card">
                 <div class="exp-date">
-                    <span class="exp-period">2012 – 2019</span>
-                    <span class="exp-duration">7 ans</span>
+                    <span class="exp-period">2009 – 2019</span>
+                    <span class="exp-duration">10 ans</span>
                 </div>
                 <div class="exp-content">
-                    <h3>Technicien d'exploitation & Support N2</h3>
-                    <div class="exp-company">Sodebo</div>
+                    <h3>Technicien d'exploitation et Support N2 (3000 utilisateurs, 350 applications, 5000 postes)</h3>
+                    <div class="exp-company">Sodebo – St Georges de Montaigu</div>
                     <ul class="exp-tasks">
-                        <li>Support informatique niveau 2</li>
-                        <li>Exploitation Windows, Windows Server, macOS et Citrix</li>
-                        <li>Gestion téléphonie fixe et mobile</li>
-                        <li>Câblage réseau cuivre et fibre optique</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="exp-card">
-                <div class="exp-date">
-                    <span class="exp-period">2010 – 2012</span>
-                    <span class="exp-duration">2 ans</span>
-                </div>
-                <div class="exp-content">
-                    <h3>Assistant ADV, Comptabilité & Statistiques</h3>
-                    <div class="exp-company">Sodebo</div>
-                    <ul class="exp-tasks">
-                        <li>Gestion des tableaux de bord et analyses statistiques</li>
-                        <li>Relance impayés et gestion comptable</li>
-                        <li>Support à la force de vente</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="exp-card">
-                <div class="exp-date">
-                    <span class="exp-period">2003 – 2009</span>
-                    <span class="exp-duration">6 ans</span>
-                </div>
-                <div class="exp-content">
-                    <h3>Chef d'équipe agro‑alimentaire</h3>
-                    <div class="exp-company">Sodebo</div>
-                    <ul class="exp-tasks">
-                        <li>Management d'une équipe de 15 personnes</li>
-                        <li>Gestion de la production industrielle</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="exp-card">
-                <div class="exp-date">
-                    <span class="exp-period">1995 – 2002</span>
-                    <span class="exp-duration">7 ans</span>
-                </div>
-                <div class="exp-content">
-                    <h3>Responsable secteur épicerie</h3>
-                    <div class="exp-company">Intermarché / Leclerc</div>
-                    <ul class="exp-tasks">
-                        <li>Management d'une équipe de 8 personnes</li>
-                        <li>Gestion approvisionnement et merchandising</li>
+                        <li>Dans une équipe de 6 techniciens</li>
+                        <li>Support de niveau 2</li>
+                        <li>Exploitation des systèmes Windows, Windows Server, macOS et Citrix</li>
+                        <li>Exploitation de la téléphonie fixe et mobile. Câblage réseau cuivre et fibre optique</li>
                     </ul>
                 </div>
             </div>
@@ -889,27 +908,13 @@ footer {
         <div class="skills-container">
             <div class="skill-category">
                 <div class="skill-category-title">
-                    <i class="fas fa-headset"></i> Support & Formation
+                    <i class="fas fa-desktop"></i> Systèmes & Bureautique
                 </div>
                 <div class="skills-list">
-                    <span class="skill-pill featured">Support N2</span>
-                    <span class="skill-pill featured">Support applicatif</span>
-                    <span class="skill-pill">Formation utilisateurs</span>
-                    <span class="skill-pill">Tutorat</span>
-                    <span class="skill-pill">ITSM</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <div class="skill-category-title">
-                    <i class="fas fa-desktop"></i> Systèmes & Infrastructure
-                </div>
-                <div class="skills-list">
-                    <span class="skill-pill">Windows</span>
-                    <span class="skill-pill">Windows Server</span>
-                    <span class="skill-pill">macOS</span>
-                    <span class="skill-pill">Citrix</span>
-                    <span class="skill-pill">Sécurité poste</span>
+                    <span class="skill-pill featured">Windows / Office 365 / Citrix</span>
+                    <span class="skill-pill featured">GLPI</span>
+                    <span class="skill-pill">Active Directory</span>
+                    <span class="skill-pill">MDT / FOG</span>
                 </div>
             </div>
 
@@ -918,9 +923,18 @@ footer {
                     <i class="fas fa-network-wired"></i> Réseaux & Télécom
                 </div>
                 <div class="skills-list">
-                    <span class="skill-pill">Réseaux TCP/IP</span>
-                    <span class="skill-pill">Câblage cuivre & fibre</span>
-                    <span class="skill-pill">Téléphonie</span>
+                    <span class="skill-pill">Cisco configuration switch, WIFI</span>
+                    <span class="skill-pill">Téléphonie IPBX et PABX</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-mobile-alt"></i> Mobile & Virtualisation
+                </div>
+                <div class="skills-list">
+                    <span class="skill-pill">Android / iOS et MDM</span>
+                    <span class="skill-pill">VMware et VirtualBox</span>
                 </div>
             </div>
 
@@ -995,32 +1009,56 @@ footer {
         <div class="formation-timeline">
             <div class="formation-item">
                 <span class="formation-year">2024</span>
-                <div class="formation-title">Formation IA – Automation & No‑code</div>
+                <div class="formation-title">Formation IA Automation et Nocode</div>
                 <div class="formation-school">École CUBE</div>
             </div>
 
             <div class="formation-item">
                 <span class="formation-year">2018</span>
-                <div class="formation-title">MOOC Sécurité authentification & nomadisme</div>
+                <div class="formation-title">MOOC Sécurité de l'authentification, d'Internet, du poste de travail et du nomadisme</div>
                 <div class="formation-school">ANSSI</div>
             </div>
 
             <div class="formation-item">
                 <span class="formation-year">2018</span>
-                <div class="formation-title">BULATS A2 – Anglais</div>
-                <div class="formation-school">Cambridge</div>
+                <div class="formation-title">Bulat A2</div>
+                <div class="formation-school">Cambridge English Language Assessment</div>
             </div>
 
             <div class="formation-item">
-                <span class="formation-year">2008</span>
-                <div class="formation-title">Technicien de maintenance informatique</div>
-                <div class="formation-school">CNFDI Paris</div>
+                <span class="formation-year">2008 – 2009</span>
+                <div class="formation-title">Formation Professionnelle technicien de maintenance informatique – Mention Très bien</div>
+                <div class="formation-school">CNFDI à Paris</div>
             </div>
 
             <div class="formation-item">
-                <span class="formation-year">1994</span>
-                <div class="formation-title">Prépa Expertise Comptable & Baccalauréat Comptabilité</div>
-                <div class="formation-school">Lycée Albert Camus & Sacré Cœur, Nantes</div>
+                <span class="formation-year">1994 – 1995</span>
+                <div class="formation-title">Prépa Expertise Comptable</div>
+                <div class="formation-school">Lycée Albert Camus, Nantes</div>
+            </div>
+
+            <div class="formation-item">
+                <span class="formation-year">1992 – 1994</span>
+                <div class="formation-title">Bac Comptabilité</div>
+                <div class="formation-school">Lycée Sacré Cœur, Nantes</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-running"></i></div>
+            <h2 class="section-title">Centres d'intérêt</h2>
+        </div>
+
+        <div class="interests-grid">
+            <div class="interest-item">
+                <div class="interest-icon"><i class="fas fa-bicycle"></i></div>
+                <span class="interest-label">Cyclisme sur route en club</span>
+            </div>
+            <div class="interest-item">
+                <div class="interest-icon"><i class="fas fa-running"></i></div>
+                <span class="interest-label">Running en loisir</span>
             </div>
         </div>
     </section>
@@ -1147,34 +1185,36 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         pdf.text('Cyrille Audureau', ML + 5, y + 11);
 
         // Title badge
-        rRect(ML + 5, y + 14, 60, 9, 3, C_PRIMARY, null);
+        rRect(ML + 5, y + 14, 105, 9, 3, C_PRIMARY, null);
         pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(11);
+        pdf.setFontSize(9.5);
         pdf.setTextColor(255, 255, 255);
-        pdf.text('Technicien Support N2', ML + 8, y + 20);
+        pdf.text('Technicien informatique de maintenance de proximit\u00e9', ML + 8, y + 20);
 
-        // Contact info
+        // Contact info - line 1
         var contactY = y + 29;
         pdf.setFont('helvetica', 'normal');
-        pdf.setFontSize(9);
+        pdf.setFontSize(8.5);
         pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
 
-        var contacts = [
-            '06 98 72 73 37',
-            'cyrille44tech@protonmail.com',
-            '44700 Orvault',
-            'Permis B'
-        ];
+        var contacts1 = ['06 98 72 73 37', 'cyrille44tech@protonmail.com', 'Permis B'];
         var cX = ML + 5;
-        for (var ci = 0; ci < contacts.length; ci++) {
-            pdf.text(contacts[ci], cX, contactY);
-            cX += pdf.getTextWidth(contacts[ci]) + 5;
-            if (ci < contacts.length - 1) {
+        for (var ci = 0; ci < contacts1.length; ci++) {
+            pdf.text(contacts1[ci], cX, contactY);
+            cX += pdf.getTextWidth(contacts1[ci]) + 5;
+            if (ci < contacts1.length - 1) {
                 pdf.setTextColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
                 pdf.text('|', cX - 3, contactY);
                 pdf.setTextColor(C_MEDIUM[0], C_MEDIUM[1], C_MEDIUM[2]);
             }
         }
+        // Contact info - line 2
+        contactY += 5;
+        pdf.text('2 Rue de la Diligence, 44700 Orvault', ML + 5, contactY);
+        pdf.setTextColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
+        pdf.text('|', ML + 5 + pdf.getTextWidth('2 Rue de la Diligence, 44700 Orvault') + 2, contactY);
+        pdf.setTextColor(C_SECONDARY[0], C_SECONDARY[1], C_SECONDARY[2]);
+        pdf.text('LinkedIn', ML + 5 + pdf.getTextWidth('2 Rue de la Diligence, 44700 Orvault') + 6, contactY);
 
         // Impact stats
         var statX = PW - MR - 42;
@@ -1192,7 +1232,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(20);
         pdf.setTextColor(C_PRIMARY[0], C_PRIMARY[1], C_PRIMARY[2]);
-        pdf.text('15+', statX + 18.5, y + 33.5, { align: 'center' });
+        pdf.text('17+', statX + 18.5, y + 33.5, { align: 'center' });
         pdf.setFont('helvetica', 'normal');
         pdf.setFontSize(7);
         pdf.setTextColor(C_LIGHT[0], C_LIGHT[1], C_LIGHT[2]);
@@ -1208,7 +1248,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         pdf.text('Pourquoi me recruter ?', PW / 2, y + 8, { align: 'center' });
 
         var whyItems = [
-            { title: 'Double comp\u00e9tence', desc: 'Expertise technique IT + sens business acquis sur le terrain (management, commerce, production)' },
+            { title: 'Polyvalence terrain', desc: 'Exp\u00e9rience compl\u00e8te : support N2, d\u00e9ploiement, administration syst\u00e8me, r\u00e9seau et t\u00e9l\u00e9phonie' },
             { title: 'Transmission du savoir', desc: "Formateur naturel, j'ai accompagn\u00e9 et tutor\u00e9 de nombreux collaborateurs avec p\u00e9dagogie" },
             { title: 'Vision moderne', desc: 'Form\u00e9 aux outils IA et No-code en 2024 pour optimiser les processus support' }
         ];
@@ -1233,18 +1273,14 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         y = sectionTitle('Parcours professionnel', y);
 
         var experiences = [
-            { period: '2021 - 2026', duration: '5 ans', title: 'Technicien Support N2', company: 'Liciel Environnement - Saint-Herblain',
-              tasks: ["Support et formation logiciels pour professionnels de l'immobilier", 'Tutorat des nouveaux collaborateurs', "Personnalisation et am\u00e9lioration des solutions clients", "Suivi des objectifs de qualit\u00e9 et de performance"] },
+            { period: '2026', duration: 'Mars 2026', title: 'Technicien de proximit\u00e9', company: 'Lyc\u00e9e Nicolas Appert - Orvault',
+              tasks: ["Technicien de proximit\u00e9 en int\u00e9rim, seul sur le service (1500 utilisateurs)", "D\u00e9ploiement et administration : Masterisation via Fog, Windows, bureautique", "Gestion infrastructures : Active Directory, Vcenter, switchs Cisco, wifi", "Support sp\u00e9cialis\u00e9 : mat\u00e9riel formation industrielle (robotique, automates)", "Gestion de parc via GLPI : PC, imprimantes, vid\u00e9oprojecteurs, t\u00e9l\u00e9phonie PABX"] },
+            { period: '2021 - 2025', duration: '4 ans', title: 'Technicien Support N2', company: 'Liciel Environnement - St Herblain',
+              tasks: ["\u00c9quipe de 4 techniciens (6000 clients, 20 tickets/jour)", "Support et formation logiciels pour professionnels de l'immobilier", 'Tuteur pour les nouveaux collaborateurs', "Am\u00e9lioration et personnalisation des logiciels. Suivi des objectifs"] },
             { period: '2019 - 2021', duration: '2 ans', title: 'Technicien Support N2', company: 'Logicmax Technologie - Nantes',
-              tasks: ["Support et formation logiciels pour professionnels de sant\u00e9", "Accompagnement utilisateurs et r\u00e9solution d'incidents", 'Tutorat des nouveaux collaborateurs'] },
-            { period: '2012 - 2019', duration: '7 ans', title: "Technicien d'exploitation & Support N2", company: 'Sodebo',
-              tasks: ['Support informatique niveau 2', 'Exploitation Windows, Windows Server, macOS et Citrix', "G\u00e9stion t\u00e9l\u00e9phonie fixe et mobile", "C\u00e2blage r\u00e9seau cuivre et fibre optique"] },
-            { period: '2010 - 2012', duration: '2 ans', title: "Assistant ADV, Comptabilit\u00e9 & Statistiques", company: 'Sodebo',
-              tasks: ["Gestion des tableaux de bord et analyses statistiques", "Relance impay\u00e9s et gestion comptable", "Support \u00e0 la force de vente"] },
-            { period: '2003 - 2009', duration: '6 ans', title: "Chef d'\u00e9quipe agro-alimentaire", company: 'Sodebo',
-              tasks: ["Management d'une \u00e9quipe de 15 personnes", 'Gestion de la production industrielle'] },
-            { period: '1995 - 2002', duration: '7 ans', title: "Responsable secteur \u00e9picerie", company: "Intermarch\u00e9 / Leclerc",
-              tasks: ["Management d'une \u00e9quipe de 8 personnes", "Gestion approvisionnement et merchandising"] }
+              tasks: ["\u00c9quipe de 20 techniciens (11000 clients, 30 tickets/jour)", "Support et formation logiciels pour professionnels de sant\u00e9", 'Tuteur pour les nouveaux collaborateurs'] },
+            { period: '2009 - 2019', duration: '10 ans', title: "Technicien d'exploitation et Support N2", company: 'Sodebo - St Georges de Montaigu',
+              tasks: ["\u00c9quipe de 6 techniciens (3000 utilisateurs, 350 applis, 5000 postes)", 'Support de niveau 2', 'Exploitation Windows, Windows Server, macOS et Citrix', "T\u00e9l\u00e9phonie fixe et mobile. C\u00e2blage r\u00e9seau cuivre et fibre optique"] }
         ];
 
         for (var ei = 0; ei < experiences.length; ei++) {
@@ -1307,9 +1343,9 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         y = sectionTitle('Comp\u00e9tences techniques', y);
 
         var skillCategories = [
-            { title: 'Support & Formation', skills: ['Support N2', 'Support applicatif', 'Formation utilisateurs', 'Tutorat', 'ITSM'], featured: [0, 1] },
-            { title: "Syst\u00e8mes & Infrastructure", skills: ['Windows', 'Windows Server', 'macOS', 'Citrix', "S\u00e9curit\u00e9 poste"], featured: [] },
-            { title: "R\u00e9seaux & T\u00e9l\u00e9com", skills: ["R\u00e9seaux TCP/IP", "C\u00e2blage cuivre & fibre", "T\u00e9l\u00e9phonie"], featured: [] },
+            { title: "Syst\u00e8mes & Bureautique", skills: ['Windows / Office 365 / Citrix', 'GLPI', 'Active Directory', 'MDT / FOG'], featured: [0, 1] },
+            { title: "R\u00e9seaux & T\u00e9l\u00e9com", skills: ['Cisco switch, WIFI', 'T\u00e9l\u00e9phonie IPBX et PABX'], featured: [] },
+            { title: 'Mobile & Virtualisation', skills: ['Android / iOS et MDM', 'VMware et VirtualBox'], featured: [] },
             { title: 'Innovation & Avenir', skills: ['IA & Automatisation', 'No-code'], featured: [0, 1] }
         ];
 
@@ -1388,11 +1424,12 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         y = sectionTitle('Formation & Certifications', y);
 
         var formations = [
-            { year: '2024', title: "Formation IA - Automation & No-code", school: "\u00c9cole CUBE" },
+            { year: '2024', title: "Formation IA Automation et Nocode", school: "\u00c9cole CUBE" },
             { year: '2018', title: "MOOC S\u00e9curit\u00e9 authentification & nomadisme", school: 'ANSSI' },
-            { year: '2018', title: "BULATS A2 - Anglais", school: 'Cambridge' },
-            { year: '2008', title: 'Technicien de maintenance informatique', school: 'CNFDI Paris' },
-            { year: '1994', title: "Pr\u00e9pa Expertise Comptable & Baccalaur\u00e9at Comptabilit\u00e9", school: "Lyc\u00e9e Albert Camus & Sacr\u00e9 Coeur, Nantes" }
+            { year: '2018', title: "Bulat A2", school: 'Cambridge English Language Assessment' },
+            { year: '2008', title: 'Technicien de maintenance informatique - Mention Tr\u00e8s bien', school: 'CNFDI \u00e0 Paris' },
+            { year: '1994', title: "Pr\u00e9pa Expertise Comptable", school: "Lyc\u00e9e Albert Camus, Nantes" },
+            { year: '1992', title: "Bac Comptabilit\u00e9", school: "Lyc\u00e9e Sacr\u00e9 Coeur, Nantes" }
         ];
 
         // Timeline line
@@ -1430,6 +1467,22 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
             pdf.text(f.school, ML + 30, fY + 9);
         }
 
+        // --- CENTRES D'INTERET ---
+        y = sectionTitle("Centres d'int\u00e9r\u00eat", y);
+
+        var interests = ['Cyclisme sur route en club', 'Running en loisir'];
+        var intW = (CW - 6) / 2;
+        for (var ii = 0; ii < interests.length; ii++) {
+            var intX = ML + ii * (intW + 6);
+            rRect(intX, y, intW, 9.5, 2, [253, 251, 247], null);
+            pdf.setFillColor(C_GOLD[0], C_GOLD[1], C_GOLD[2]);
+            pdf.circle(intX + 5, y + 4.8, 1.5, 'F');
+            pdf.setFont('helvetica', 'normal');
+            pdf.setFontSize(9);
+            pdf.setTextColor(C_DARK[0], C_DARK[1], C_DARK[2]);
+            pdf.text(interests[ii], intX + 9, y + 6);
+        }
+
         // --- FOOTER LINE ---
         y = PH - 12;
         pdf.setDrawColor(230, 230, 230);
@@ -1445,7 +1498,7 @@ document.getElementById('exportPdfBtn').addEventListener('click', function() {
         var blobUrl = URL.createObjectURL(pdfBlob);
         var link = document.createElement('a');
         link.href = blobUrl;
-        link.download = 'CV_Cyrille_Audureau_Technicien_Support_N2.pdf';
+        link.download = 'CV_Cyrille_Audureau_Technicien_Maintenance_Proximite.pdf';
         link.style.display = 'none';
         document.body.appendChild(link);
         link.click();
